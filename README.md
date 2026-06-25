@@ -28,6 +28,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `CLAUDE.md` — the heart: brand/design system + design principles + quality budget + workflow. **Fill in the placeholders first.**
 - `.claude/agents/` — `designer`, `builder`, `qa`
 - `.claude/commands/` — `craft`, `polish`
+- `.claude/skills/` — `premium-design` (bundled design-quality skill: palette, typography, motion, context adaptation)
 - `.craft/` — handoff workspace (`design.md`, `build-notes.md`, `qa-report.md`)
 
 ## Start a new project
