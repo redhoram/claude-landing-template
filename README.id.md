@@ -28,6 +28,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `CLAUDE.md` — jantungnya: brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
 - `.claude/agents/` — `designer`, `builder`, `qa`
 - `.claude/commands/` — `craft`, `polish`
+- `.claude/skills/` — `premium-design` (skill kualitas desain bawaan: palette, tipografi, motion, adaptasi konteks)
 - `.craft/` — workspace handoff (`design.md`, `build-notes.md`, `qa-report.md`)
 
 ## Bikin project baru
