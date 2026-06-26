@@ -23,6 +23,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 [REQUIRED — fill before starting. This is what keeps the output consistent & sharp.]
 
+- **Visual reference** (recommended): [URL or "looks like X" — this becomes the taste benchmark for the designer. If you have one, put it here. If not, the designer will propose boldly.]
 - **Palette**: [colors + each color's role + CONTRAST RULES: which text/bg pairings are FORBIDDEN]. Normal text ≥ 4.5:1.
 - **Typography**: [display + body fonts, heading scale]
 - **Section rhythm** (for landing): [order of section colors/tones so the page has rhythm]
@@ -42,6 +43,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **Responsive**: check 375 / 768 / 1280px. No horizontal scroll on mobile.
 - **Performance**: light assets (optimized/WebP images, small favicon, lazy-load heavy stuff), reserve space to avoid layout shift.
 - **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (build/image tools → `devDependencies`); no junk files/scripts in the repo; semantic HTML.
+- **No-JS resilience**: scroll-reveal hidden state must degrade gracefully — apply via a JS-added class on `<body>`, not hardcoded as `opacity-0` in JSX initial state. Always respect `prefers-reduced-motion: reduce`.
 - **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims.
 
 ## Assets

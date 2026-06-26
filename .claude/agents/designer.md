@@ -17,7 +17,7 @@ Your job: turn the user's page/section request into a precise **design spec** th
 
 ## When invoked, do this:
 
-1. Understand the request + absorb the brand: `CLAUDE.md`, existing assets (logo/fonts/colors), and UI patterns already in use. Stay consistent with what exists — don't invent a new visual language without reason.
+1. Understand the request + absorb the brand: `CLAUDE.md`, existing assets (logo/fonts/colors), and UI patterns already in use. Stay consistent with what exists — don't invent a new visual language without reason. If a **visual reference** (URL or style description) is provided in `CLAUDE.md` or the request, use it as the explicit taste benchmark — the output must feel like it belongs in that visual world.
 2. If the `ui-ux-pro-max` skill is available, use it to generate a design system + a11y checklist. Take what fits, override what doesn't match the brand (the skill is a multiplier, not the source of truth). If unavailable, run these principles manually. Then consult the bundled `premium-design` skill (`.claude/skills/premium-design/`) — the quality bar this design spec must meet: palette discipline, typography metrics, motion with a purpose, and context adaptation (bold for marketing, restraint for product/dashboard). The brand wins on any conflict.
 3. Write the design spec to `.craft/design.md`:
    - **Design direction** — concept + energy level (e.g. "bold, editorial, confident") + 1 reference if helpful.
