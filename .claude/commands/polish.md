@@ -7,7 +7,7 @@ Target: $ARGUMENTS
 This is for **iterating (1→great)** on existing UI, not building from scratch. Work directly & interactively (don't use batch subagents):
 
 1. Read `CLAUDE.md` (quality budget + design system) and the target code.
-2. Start the dev server, look at the current state in live preview (render, responsive 375/768/1280, console errors).
+2. Start the dev server, look at the current state in live preview — two layers: *function* (responsive 375/768/1280, console errors) and *taste* (run the `premium-design` Done Check: zero raw colors? deliberate hover states? intentional, not generic? Would a senior designer call this premium?).
 3. Fix what's lacking, ordered by impact:
    - Accessibility (contrast, focus ring, `alt`, `aria-label`, `cursor-pointer`)
    - Responsiveness & layout shift
