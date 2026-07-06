@@ -1,10 +1,20 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude%20Code-Template-D97757?logo=anthropic&logoColor=white" alt="Claude Code Template">
+  <img src="https://img.shields.io/badge/Visual-Loop-informational" alt="Visual Loop">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.id.md">Bahasa Indonesia</a>
+</p>
+
+---
+
 # _landing-template
 
-> 🇬🇧 [English version](./README.md)
+Template framework untuk **landing page & aplikasi sederhana** — berat di desain & konten, ringan di logika. Saudara dari [`_pipeline-template`](https://github.com/redhoram/claude-pipeline-template) (yang buat app CRUD kompleks), tapi dioptimalkan untuk kerja visual yang iteratif.
 
-Template framework untuk **landing page & aplikasi sederhana** — berat di desain & konten, ringan di logika. Saudara dari `_pipeline-template` (yang buat app CRUD kompleks), tapi dioptimalkan untuk kerja visual yang iteratif.
-
-## Filosofi: loop visual, bukan pipeline batch
+### Filosofi: loop visual, bukan pipeline batch
 
 Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline batch lima-tahap di sini malah mematikan loop itu. Jadi framework ini punya **dua mode**:
 
@@ -13,7 +23,7 @@ Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline b
 
 Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
-## Beda dari `_pipeline-template`
+### Beda dari `_pipeline-template`
 
 | | `_pipeline-template` (CRUD kompleks) | `_landing-template` (landing & app sederhana) |
 |---|---|---|
@@ -23,7 +33,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 | Command | `/ship` | `/craft` (0→1) + `/polish` (1→bagus) |
 | Verifikasi | build/lint/test + skenario | live preview: render, responsif, console |
 
-## Isi
+### Isi
 
 - `CLAUDE.md` — jantungnya: brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
 - `.claude/agents/` — `designer`, `builder`, `qa`
@@ -31,13 +41,20 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `.claude/skills/` — `premium-design` (skill kualitas desain bawaan: palette, tipografi, motion, adaptasi konteks)
 - `.craft/` — workspace handoff (`design.md`, `build-notes.md`, `qa-report.md`)
 
-## Bikin project baru
+### Bikin project baru
 
 1. Copy `_landing-template` → rename folder
 2. Isi `CLAUDE.md` — terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam)
 3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react)
 4. `git init`
 
-## Standar
+### Standar
 
 Yang bikin output beda dari generator instan: **berani di desain, disiplin di kode.** Detail di prinsip & anggaran kualitas dalam `CLAUDE.md`.
+
+### Kredit
+
+**Author**
+- Redho Ramadhani — [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
+
+Dibangun dengan [Claude Code](https://claude.com/claude-code).
