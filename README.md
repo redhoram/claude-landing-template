@@ -1,10 +1,20 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude%20Code-Template-D97757?logo=anthropic&logoColor=white" alt="Claude Code Template">
+  <img src="https://img.shields.io/badge/Visual-Loop-informational" alt="Visual Loop">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.id.md">Bahasa Indonesia</a>
+</p>
+
+---
+
 # _landing-template
 
-> 🇮🇩 [Versi Bahasa Indonesia](./README.id.md)
+A template framework for **landing pages & simple apps** — heavy on design & content, light on logic. Sibling of [`_pipeline-template`](https://github.com/redhoram/claude-pipeline-template) (for complex CRUD apps), but optimized for iterative visual work.
 
-A template framework for **landing pages & simple apps** — heavy on design & content, light on logic. Sibling of `_pipeline-template` (for complex CRUD apps), but optimized for iterative visual work.
-
-## Philosophy: visual loop, not a batch pipeline
+### Philosophy: visual loop, not a batch pipeline
 
 Design is iterative & visual (see → change → see again). Forcing a five-stage batch pipeline here just kills that loop. So this framework has **two modes**:
 
@@ -13,7 +23,7 @@ Design is iterative & visual (see → change → see again). Forcing a five-stag
 
 Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 
-## Difference from `_pipeline-template`
+### Difference from `_pipeline-template`
 
 | | `_pipeline-template` (complex CRUD) | `_landing-template` (landing & simple apps) |
 |---|---|---|
@@ -23,7 +33,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 | Command | `/ship` | `/craft` (0→1) + `/polish` (1→great) |
 | Verification | build/lint/test + scenarios | live preview: render, responsive, console |
 
-## Contents
+### Contents
 
 - `CLAUDE.md` — the heart: brand/design system + design principles + quality budget + workflow. **Fill in the placeholders first.**
 - `.claude/agents/` — `designer`, `builder`, `qa`
@@ -31,13 +41,20 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `.claude/skills/` — `premium-design` (bundled design-quality skill: palette, typography, motion, context adaptation)
 - `.craft/` — handoff workspace (`design.md`, `build-notes.md`, `qa-report.md`)
 
-## Start a new project
+### Start a new project
 
 1. Copy `_landing-template` → rename the folder
 2. Fill in `CLAUDE.md` — especially the **Brand & Design System** section (this is what keeps output consistent & sharp)
 3. Scaffold the stack (default Vite + React + TS + Tailwind v4 + lucide-react)
 4. `git init`
 
-## Standard
+### Standard
 
 What sets the output apart from instant generators: **bold in design, disciplined in code.** Details in the principles & quality budget inside `CLAUDE.md`.
+
+### Credit
+
+**Author**
+- Redho Ramadhani — [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
+
+Built with [Claude Code](https://claude.com/claude-code).
