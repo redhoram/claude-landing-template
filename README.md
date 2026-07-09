@@ -41,16 +41,24 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `.claude/skills/` — `premium-design` (bundled design-quality skill: palette, typography, motion, context adaptation)
 - `.craft/` — handoff workspace (`design.md`, `build-notes.md`, `qa-report.md`)
 
+### Prerequisites
+
+- [Claude Code](https://claude.com/claude-code) installed — `/craft` and `/polish` are **Claude Code slash commands**, typed inside a Claude Code session in the project folder (they're not npm scripts).
+- Node.js 18+ and npm (the default stack is Vite-based).
+
 ### Start a new project
 
 1. Copy `_landing-template` → rename the folder
 2. Fill in `CLAUDE.md` — especially the **Brand & Design System** section (this is what keeps output consistent & sharp)
-3. Scaffold the stack (default Vite + React + TS + Tailwind v4 + lucide-react)
+3. Scaffold the stack (default Vite + React + TS + Tailwind v4 + lucide-react) — or skip this: `/craft` auto-scaffolds when `package.json` doesn't exist yet
 4. `git init`
+5. Open Claude Code in the folder → run `/craft [page/section]`
 
 ### Standard
 
 What sets the output apart from instant generators: **bold in design, disciplined in code.** Details in the principles & quality budget inside `CLAUDE.md`.
+
+And **fail loud, not silent**: the design spec carries a READY/BLOCKED status flag, the builder declares BLOCKED instead of looping forever on a broken build, and QA never claims visual checks it can't perform headless — visual judgment happens in the main session, with eyes on the live preview.
 
 ### Credit
 
