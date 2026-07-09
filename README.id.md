@@ -41,16 +41,24 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `.claude/skills/` — `premium-design` (skill kualitas desain bawaan: palette, tipografi, motion, adaptasi konteks)
 - `.craft/` — workspace handoff (`design.md`, `build-notes.md`, `qa-report.md`)
 
+### Prasyarat
+
+- [Claude Code](https://claude.com/claude-code) ter-install — `/craft` dan `/polish` itu **slash command Claude Code**, diketik di dalam sesi Claude Code di folder project (bukan script npm).
+- Node.js 18+ dan npm (stack default berbasis Vite).
+
 ### Bikin project baru
 
 1. Copy `_landing-template` → rename folder
 2. Isi `CLAUDE.md` — terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam)
-3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react)
+3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react) — atau skip aja: `/craft` auto-scaffold kalau `package.json` belum ada
 4. `git init`
+5. Buka Claude Code di folder itu → jalankan `/craft [halaman/section]`
 
 ### Standar
 
 Yang bikin output beda dari generator instan: **berani di desain, disiplin di kode.** Detail di prinsip & anggaran kualitas dalam `CLAUDE.md`.
+
+Dan **gagal keras, bukan diam-diam**: design spec bawa flag status READY/BLOCKED, builder bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak bisa dia lakukan headless — penilaian visual terjadi di main session, dengan mata di live preview.
 
 ### Kredit
 
