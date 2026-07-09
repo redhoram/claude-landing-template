@@ -2,7 +2,7 @@
 
 [Replace EVERY placeholder in this file before starting. Write 1-2 sentences: what this project is, who it's for, and its goal.]
 
-This is a **landing page / simple app** project — heavy on design & content, light on logic. The framework and workflow here are optimized for that, NOT for complex CRUD apps (use the separate batch pipeline for those).
+This is a **landing page / simple app** project — heavy on design & content, light on logic. The framework and workflow here are optimized for that, NOT for complex CRUD apps (use `_pipeline-template` — the 5-agent `/ship` batch pipeline — for those).
 
 ## Stack (default — adjust if different)
 
@@ -55,4 +55,5 @@ Logos/images: ensure REAL transparency (many "transparent" files actually have a
 - Code & comments: English
 - Communication language with user: [e.g. Indonesian / English]
 - Never commit `.env*` or any API key to Git
-- [Project-specific rule — e.g. dev port, launcher, etc.]
+- Dev server: `npm run dev` (Vite, default port 5173) — [adjust if this project uses a different launcher/port]
+- [Project-specific rule — e.g. custom scripts, deploy target, etc.]
