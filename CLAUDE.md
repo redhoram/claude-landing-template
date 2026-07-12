@@ -15,7 +15,7 @@ This is a **landing page / simple app** project — heavy on design & content, l
 
 Design is iterative & visual. The main mode is interactive work in the main session: **edit → see it in live preview → adjust**. Run the dev server and actually look at the result; don't work blind.
 
-- **0→1 — `/craft [page/section]`**: spin up a strong draft from scratch (designer → builder → qa). For getting a fast foundation.
+- **0→1 — `/craft [page/section]`**: spin up a strong draft from scratch (writer → designer → builder → qa — copy first, then layout). For getting a fast foundation.
 - **1→great — interactive / `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
 - DON'T use `/craft` for small tweaks — that kills the iteration loop.
 
@@ -41,7 +41,9 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 - **Accessibility**: contrast ≥4.5:1, visible focus ring, meaningful `alt` on images, `aria-label` on icon buttons, `cursor-pointer` on everything clickable, logical tab order.
 - **Responsive**: check 375 / 768 / 1280px. No horizontal scroll on mobile.
-- **Performance**: light assets (optimized/WebP images, small favicon, lazy-load heavy stuff), reserve space to avoid layout shift.
+- **Performance (measurable)**: LCP < 2.5s, INP < 200ms, CLS < 0.1. JS bundle < 250KB gzipped. Images WebP/AVIF, no raw PNG > 200KB, small favicon; `loading="lazy"` on below-fold images; reserve space to avoid layout shift.
+- **SEO**: exactly ONE `<h1>` per page; heading levels never skip (no h2 → h4); `<title>` + meta description (< 155 chars, reads like ad copy for the page); descriptive `alt` doubles as image SEO; JSON-LD structured data (Product/FAQPage/Article) when the content type fits.
+- **Conversion basics**: primary CTA visible above the fold at 375px AND 1280px; CTA labels are verb-first and specific ("Start free", not "Submit"/"Learn more").
 - **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (build/image tools → `devDependencies`); no junk files/scripts in the repo; semantic HTML.
 - **No-JS resilience**: scroll-reveal hidden state must degrade gracefully — apply via a JS-added class on `<body>`, not hardcoded as `opacity-0` in JSX initial state. Always respect `prefers-reduced-motion: reduce`.
 - **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims.
