@@ -38,8 +38,19 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `CLAUDE.md` — jantungnya: brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
 - `.claude/agents/` — `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/` — `craft`, `polish`
-- `.claude/skills/` — `premium-design` (skill kualitas desain bawaan: palette, tipografi, motion, adaptasi konteks)
+- `.claude/skills/` — 4 skill bawaan yang ditegakkan para agent (matriks di bawah)
 - `.craft/` — workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`)
+
+### Matriks skill
+
+Tiap agent cuma baca skill milik tahapnya — didokumentasikan di sini biar pemetaannya bisa diaudit:
+
+| Skill | Dipakai oleh | Menegakkan |
+|---|---|---|
+| `conversion-copy` | writer | Formula headline + tes spesifisitas, pilihan arc PAS-vs-AIDA, hierarki bukti jujur, penanganan objection, aturan CTA/microcopy dan bahasa |
+| `premium-design` | designer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
+| `ux-research` | designer + qa | Landasan user + JTBD, 3-5 prinsip psikologi bernama per surface, checklist usability, garis keras anti dark-pattern; diagnostik 10 pertanyaan (severity 0-4) jalan di visual taste loop |
+| `web-quality` | builder | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4 — adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
 
 ### Prasyarat
 
