@@ -38,8 +38,19 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `CLAUDE.md` — the heart: brand/design system + design principles + quality budget + workflow. **Fill in the placeholders first.**
 - `.claude/agents/` — `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/` — `craft`, `polish`
-- `.claude/skills/` — `premium-design` (bundled design-quality skill: palette, typography, motion, context adaptation)
+- `.claude/skills/` — 4 bundled skills the agents enforce (matrix below)
 - `.craft/` — handoff workspace (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`)
+
+### Skill matrix
+
+Each agent reads only the skills that belong to its stage — documented here so the mapping is auditable:
+
+| Skill | Used by | Enforces |
+|---|---|---|
+| `conversion-copy` | writer | Headline formulas + specificity test, PAS-vs-AIDA arc choice, honest proof hierarchy, objection preemption, CTA/microcopy and language rules |
+| `premium-design` | designer | Palette discipline, typography metrics, intentional motion, marketing-vs-product intensity |
+| `ux-research` | designer + qa | User + JTBD grounding, 3-5 named psychology principles per surface, usability checklist, dark-pattern hard-lines; its 10-question diagnostic (severity 0-4) runs in the visual taste loop |
+| `web-quality` | builder | Write-time patterns that hit the budget numbers: LCP preload, CLS dimensions, INP feedback, bundle discipline, Tailwind v4 idiom — adapted from Google Chrome team's [web-quality-skills](https://github.com/addyosmani/web-quality-skills) (MIT) |
 
 ### Prerequisites
 

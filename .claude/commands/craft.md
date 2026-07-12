@@ -16,7 +16,8 @@ Run in order, don't skip:
 4. Call the **qa** subagent to check the result. Wait until `.craft/qa-report.md` is written.
 5. Show the user a summary: copy strategy (core promise), design direction, what was built, and QA status + punch-list.
    - If QA is **NEEDS WORK**: offer to re-run from **builder** (using `.craft/qa-report.md` as the fix list) → qa. Don't loop automatically without user confirmation.
-6. **Visual taste loop (REQUIRED)**: start the dev server and look at the result in the browser. Two layers — don't skip either:
+6. **Visual taste loop (REQUIRED)**: start the dev server and look at the result in the browser. Three layers — don't skip any:
+   - *Behavior*: answer the 10-question diagnostic from `.claude/skills/ux-research/SKILL.md` §5 while driving the page; every "no" gets a severity (0-4) and severity 3+ goes straight to the punch-list.
    - *Function*: responsive at 375/768/1280px, no horizontal scroll, no console errors.
    - *Taste*: run the `premium-design` Done Check against what you see — zero raw colors? display+body fonts set? every interactive element has a deliberate hover state? Does it feel intentional, or does it still look like a template? If anything is flat/generic, add it to the punch-list. The design isn't done until it passes the taste check, not just the function check.
 

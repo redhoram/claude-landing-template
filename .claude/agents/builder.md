@@ -16,7 +16,7 @@ When invoked, do this:
    - `package.json` must exist. If it doesn't, the repo is fresh — scaffold it first per the **Stack** section in `CLAUDE.md`. For the default stack: `npm create vite@latest . -- --template react-ts`, then add Tailwind v4 via `@tailwindcss/vite` (tokens in `@theme` block in `src/index.css`, NOT `tailwind.config.js`). Confirm `npm install` and `npm run build` pass on the clean scaffold BEFORE implementing the design.
 1. Read `.craft/design.md` (look, UX, quality budget) and the patterns/components already in the codebase.
 2. Implement per the design. Follow existing patterns — don't invent a new style if one exists.
-3. Meet the quality budget from `CLAUDE.md` WITHOUT compromise:
+3. Read the bundled `web-quality` skill (`.claude/skills/web-quality/`) — the write-time patterns that hit the budget's numbers: LCP preload + fetchpriority, dimensions on every media element (CLS), instant interaction feedback (INP), bundle discipline, Tailwind v4 `@theme` idiom. Then meet the quality budget from `CLAUDE.md` WITHOUT compromise:
    - **Accessibility**: contrast, focus ring, `alt`, `aria-label`, `cursor-pointer`, logical tab order.
    - **Responsive**: 375 / 768 / 1280px, no horizontal scroll.
    - **Cleanliness**: DRY components (use `map`, don't copy-paste); build/image deps → `devDependencies`; no junk files/scripts; semantic HTML.
