@@ -58,7 +58,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 
 What sets the output apart from instant generators: **bold in design, disciplined in code.** Details in the principles & quality budget inside `CLAUDE.md`.
 
-And **fail loud, not silent**: the design spec carries a READY/BLOCKED status flag, the builder declares BLOCKED instead of looping forever on a broken build, and QA never claims visual checks it can't perform headless — visual judgment happens in the main session, with eyes on the live preview.
+And **fail loud, not silent**: the copy and design specs carry READY/BLOCKED status flags, the builder declares BLOCKED instead of looping forever on a broken build, and QA never claims visual checks it can't perform headless — visual judgment happens in the main session, with eyes on the live preview.
 
 ### Credit
 

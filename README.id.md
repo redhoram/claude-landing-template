@@ -58,7 +58,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
 Yang bikin output beda dari generator instan: **berani di desain, disiplin di kode.** Detail di prinsip & anggaran kualitas dalam `CLAUDE.md`.
 
-Dan **gagal keras, bukan diam-diam**: design spec bawa flag status READY/BLOCKED, builder bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak bisa dia lakukan headless — penilaian visual terjadi di main session, dengan mata di live preview.
+Dan **gagal keras, bukan diam-diam**: copy spec dan design spec bawa flag status READY/BLOCKED, builder bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak bisa dia lakukan headless — penilaian visual terjadi di main session, dengan mata di live preview.
 
 ### Kredit
 
