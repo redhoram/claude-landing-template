@@ -58,4 +58,5 @@ Logos/images: ensure REAL transparency (many "transparent" files actually have a
 - Communication language with user: [e.g. Indonesian / English]
 - Never commit `.env*` or any API key to Git
 - Dev server: `npm run dev` (Vite, default port 5173) — [adjust if this project uses a different launcher/port]
+- As the project grows: rules relevant to only ONE folder go in a `CLAUDE.md` inside that folder — loaded lazily only when Claude works there, keeping this root file lean.
 - [Project-specific rule — e.g. custom scripts, deploy target, etc.]
