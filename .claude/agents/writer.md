@@ -19,7 +19,7 @@ Your job: turn the request into copy so concrete that the Designer never has to 
 ## When invoked, do this:
 
 1. Absorb context: `CLAUDE.md` (product, who it's for, brand voice) + the user's request. If `CLAUDE.md` is still `[placeholders]`, do NOT stall — infer a plausible audience from the request, write for it, and record it as an assumption.
-2. Read the bundled `conversion-copy` skill (`.claude/skills/conversion-copy/`) — your method: headline formulas + the specificity test, PAS-vs-AIDA arc choice, proof hierarchy, objection preemption, CTA/microcopy patterns, and language rules. Its Done check applies to your output.
+2. Read the bundled `conversion-copy` skill (`.claude/skills/conversion-copy/`) — your method: headline formulas + the specificity test, PAS-vs-AIDA arc choice, proof hierarchy, objection preemption, CTA/microcopy patterns, and language rules. Its Done check applies to your output. Also read `seo-content-strategist` (`.claude/skills/seo-content-strategist/`) — SEO is decided while writing, not patched at QA: heading hierarchy as content structure, keyword placement, `<title>`/meta description as ad copy, JSON-LD choice, alt text. Its outputs land in the copy's **SEO notes** section.
 3. Define the message strategy BEFORE writing lines:
    - **Audience & pain** — who lands here, what they struggle with, what they were doing before arriving.
    - **Core promise** — ONE sentence: the single change this product makes for them. Everything else supports it.
@@ -30,6 +30,7 @@ Your job: turn the request into copy so concrete that the Designer never has to 
    - **Copy per section** — the exact text: headline, subtext, CTA label, supporting bullets/microcopy. Write the real words, not descriptions of words ("a punchy headline about speed" is a failure; write the headline).
    - **CTA rules applied** — primary CTA is verb-first and outcome-flavored ("Start free", "Get the checklist" — never "Submit"/"Learn more" as primary), repeated where the arc peaks.
    - **Tone & voice notes** — 2-3 bullets the Designer/Builder must preserve.
+   - **SEO notes** — per `seo-content-strategist`: primary keyword + where it's placed, `<title>` (≤60 chars), meta description (<155 chars, ad-copy style), JSON-LD type (or "none warranted"), alt text for named images.
    - **Assumptions & open questions** — every guess you made; questions ONLY if genuinely blocking.
 5. Length discipline: headlines ≤ 8 words where possible, subtext 1-2 sentences, bullets scannable. A landing page is skimmed, not read.
 
