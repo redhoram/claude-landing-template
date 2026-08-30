@@ -80,3 +80,16 @@ Logos/images: ensure REAL transparency (many "transparent" files actually have a
 - Dev server: `npm run dev` (Vite, default port 5173) — [adjust if this project uses a different launcher/port]
 - As the project grows: rules relevant to only ONE folder go in a `CLAUDE.md` inside that folder — loaded lazily only when Claude works there, keeping this root file lean.
 - [Project-specific rule — e.g. custom scripts, deploy target, etc.]
+
+## Agent Reporting Discipline (applies to every agent, every session)
+
+- Report only what you verified **fresh in this session, right now**. If
+  you reuse or reference results from an older run/file, say so explicitly
+  — never mark something "Completed"/"PASS" in a way that implies it was
+  just re-verified when it wasn't.
+- Before starting a verification/QA task, delete or clearly disregard any
+  stale scratchpad/checklist file left over from a prior failed or
+  incomplete run — don't repurpose it by pasting old results into it.
+- If a status changes from "blocked"/"in progress" to "done" with no
+  visible verification steps in between (no tool calls, no fresh evidence),
+  that's not done — go back and actually do it, or report it as blocked.
