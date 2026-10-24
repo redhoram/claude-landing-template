@@ -38,6 +38,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **0→1 — `/craft [page/section]`**: spin up a strong draft from scratch (writer → designer → builder → qa — copy first, then layout). For getting a fast foundation.
 - **1→great — interactive / `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
 - DON'T use `/craft` for small tweaks — that kills the iteration loop.
+- Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the main session still drives the live preview for hover, motion, and console.
 
 ## Brand & Design System
 
@@ -68,6 +69,22 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **No-JS resilience**: scroll-reveal hidden state must degrade gracefully — apply via a JS-added class on `<body>`, not hardcoded as `opacity-0` in JSX initial state. Always respect `prefers-reduced-motion: reduce`.
 - **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims.
 
+## Content sources
+
+[Where real claims come from. The writer uses ONLY these for numbers, testimonials, client logos, awards, and feature claims; anything else is marked `[ILLUSTRATIVE]`. Delete the lines that don't apply.]
+
+- Product facts and features: [e.g. `docs/product.md`, or "the request"]
+- Numbers and results: [e.g. `docs/metrics.md`, or "none yet: mark illustrative"]
+- Testimonials and logos: [e.g. `docs/testimonials.md` with written permission, or "none"]
+
+## Model override
+
+[Optional. Defaults are in each agent file: writer, designer, builder on `opus`; qa on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
+
+| Agent | Model | Why |
+|---|---|---|
+| [e.g. qa] | [e.g. opus] | [e.g. visual judgment on a premium brand] |
+
 ## Assets
 
 Logos/images: ensure REAL transparency (many "transparent" files actually have a baked-in background). Extract/clean + optimize size before use. Keep raw source files OUTSIDE `public/` so they don't get deployed.
@@ -80,6 +97,7 @@ Logos/images: ensure REAL transparency (many "transparent" files actually have a
 - Dev server: `npm run dev` (Vite, default port 5173) — [adjust if this project uses a different launcher/port]
 - As the project grows: rules relevant to only ONE folder go in a `CLAUDE.md` inside that folder — loaded lazily only when Claude works there, keeping this root file lean.
 - [Project-specific rule — e.g. custom scripts, deploy target, etc.]
+- Git: [author email for commits]. Stage files by explicit path, never `git add -A`. Never push without the user's explicit confirmation.
 
 ## Agent Reporting Discipline (applies to every agent, every session)
 
