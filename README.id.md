@@ -12,14 +12,14 @@
 
 # _landing-template
 
-Template framework untuk **landing page & aplikasi sederhana** — berat di desain & konten, ringan di logika. Saudara dari [`_pipeline-template`](https://github.com/redhoram/claude-pipeline-template) (yang buat app CRUD kompleks), tapi dioptimalkan untuk kerja visual yang iteratif.
+Template framework untuk **landing page & aplikasi sederhana**: berat di desain & konten, ringan di logika. Saudara dari [`_pipeline-template`](https://github.com/redhoram/claude-pipeline-template) (yang buat app CRUD kompleks), tapi dioptimalkan untuk kerja visual yang iteratif.
 
 ### Filosofi: loop visual, bukan pipeline batch
 
 Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline batch lima-tahap di sini malah mematikan loop itu. Jadi framework ini punya **dua mode**:
 
-- **0→1 — `/craft [halaman/section]`**: spin-up draft kuat dari nol lewat 4 subagent (writer → designer → builder → qa). Copy dulu: writer menetapkan hierarki pesan + headline/CTA persis, baru designer menata layoutnya. Buat dapetin fondasi cepat.
-- **1→bagus — interaktif / `/polish [target]`**: poles di main session pakai live preview. Di sinilah desain jadi tajam.
+- **0→1 lewat `/craft [halaman/section]`**: spin-up draft kuat dari nol lewat 4 subagent (writer → designer → builder → qa). Copy dulu: writer menetapkan hierarki pesan + headline/CTA persis, baru designer menata layoutnya. Buat dapetin fondasi cepat.
+- **1→bagus, interaktif atau `/polish [target]`**: poles di main session pakai live preview. Di sinilah desain jadi tajam.
 
 Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
@@ -40,35 +40,35 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
 ### Isi
 
-- `CLAUDE.md` — jantungnya: brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
-- `.claude/agents/` — `writer`, `designer`, `builder`, `qa`
-- `.claude/commands/` — `craft`, `polish`
-- `.claude/skills/` — 5 skill bawaan yang ditegakkan para agent (matriks di bawah)
-- `.craft/` — workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), dengan run lama di `.craft/archive/`
+- `CLAUDE.md`: jantungnya, berisi brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
+- `.claude/agents/`: `writer`, `designer`, `builder`, `qa`
+- `.claude/commands/`: `craft`, `polish`
+- `.claude/skills/`: 5 skill bawaan yang ditegakkan para agent (matriks di bawah)
+- `.craft/`: workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), dengan run lama di `.craft/archive/`
 
 ### Matriks skill
 
-Tiap agent cuma baca skill milik tahapnya — didokumentasikan di sini biar pemetaannya bisa diaudit:
+Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaannya bisa diaudit:
 
 | Skill | Dipakai oleh | Menegakkan |
 |---|---|---|
 | `conversion-copy` | writer | Formula headline + tes spesifisitas, pilihan arc PAS-vs-AIDA, hierarki bukti jujur, penanganan objection, aturan CTA/microcopy dan bahasa |
-| `seo-content-strategist` | writer + qa | SEO diputusin saat nulis: hierarki heading sebagai struktur konten, penempatan keyword, title/meta sebagai ad copy, pilihan JSON-LD, alt text — dicatat di SEO notes copy.md; QA verifikasi build-nya cocok |
+| `seo-content-strategist` | writer + qa | SEO diputusin saat nulis: hierarki heading sebagai struktur konten, penempatan keyword, title/meta sebagai ad copy, pilihan JSON-LD, alt text; dicatat di SEO notes copy.md; QA verifikasi build-nya cocok |
 | `premium-design` | designer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
 | `ux-research` | designer + qa | Landasan user + JTBD, 3-5 prinsip psikologi bernama per surface, checklist usability, state interaksi dan microcopy (pending, loading, gagal, fokus, target sentuh), garis keras anti dark-pattern; diagnostik 10 pertanyaan (severity 0-4) dibagi antara screenshot QA dan taste loop langsung |
-| `web-quality` | builder | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4 — adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
+| `web-quality` | builder | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4; adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
 
 ### Prasyarat
 
-- [Claude Code](https://claude.com/claude-code) ter-install — `/craft` dan `/polish` itu **slash command Claude Code**, diketik di dalam sesi Claude Code di folder project (bukan script npm).
+- [Claude Code](https://claude.com/claude-code) ter-install: `/craft` dan `/polish` itu **slash command Claude Code**, diketik di dalam sesi Claude Code di folder project (bukan script npm).
 - Node.js 18+ dan npm (stack default berbasis Vite).
 - Browser berbasis Chromium (Chrome, Edge, atau Chromium) supaya QA bisa ngambil screenshot headless. Kalau nggak ada, QA balik ke checklist untuk main session.
 
 ### Bikin project baru
 
 1. Copy `_landing-template` → rename folder
-2. Isi `CLAUDE.md` — terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam) dan **Content sources** (apa yang boleh diklaim writer)
-3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react) — atau skip aja: `/craft` auto-scaffold kalau `package.json` belum ada
+2. Isi `CLAUDE.md`: terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam) dan **Content sources** (apa yang boleh diklaim writer)
+3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react), atau skip aja: `/craft` auto-scaffold kalau `package.json` belum ada
 4. `git init`
 5. Buka Claude Code di folder itu → jalankan `/craft [halaman/section]`
 
@@ -81,6 +81,6 @@ Dan **gagal keras, bukan diam-diam**: copy spec dan design spec bawa flag status
 ### Kredit
 
 **Author**
-- Redho Ramadhani — [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
+- Redho Ramadhani: [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
 
 Dibangun dengan [Claude Code](https://claude.com/claude-code).
