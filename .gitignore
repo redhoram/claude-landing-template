@@ -7,7 +7,7 @@
 /dist
 /dist-ssr
 
-# Environment & secrets — NEVER commit these
+# Environment & secrets: NEVER commit these
 .env
 .env.*
 !.env.example
