@@ -50,6 +50,27 @@ Condensed from Nielsen's 10 + Krug; check while writing the section breakdown:
 9. **Errors that help** — form errors in plain language, next to the field, with the fix.
 10. **No manual needed** — if a section needs explanation to be understood, redesign it.
 
+## 3b. Interaction states and microcopy (Designer specifies, QA and main session check)
+
+Write these into `design.md` for every interactive element; built pages most often
+fall short of the design here:
+
+- **Pending**: a form submit button disables and shows progress on the first click, so
+  a double-click or slow network can't send twice.
+- **Loading**: images and embeds reserve their space; content that loads late shows a
+  placeholder of the final layout, not a jump.
+- **Failure and success**: a failed form send offers a way forward (retry, edit and
+  resend, another contact route); a successful one confirms it inline or with a short
+  message that disappears on its own.
+- **Keyboard and focus**: Tab order follows the visual order, the focus ring is
+  visible, Esc closes menus and modals, focus stays inside an open modal and returns to
+  the trigger when it closes.
+- **Touch targets**: at least 44x44px on mobile, unless `CLAUDE.md` sets another size.
+- **Microcopy**: form errors say what happened and how to fix it, in the visitor's
+  words, next to the field. Buttons are verb-first and specific. Empty or "no results"
+  states pair a sentence with the next step. Indonesian copy reads as written
+  Indonesian, not a literal translation, and keeps one tone across the page.
+
 ## 4. Ethics hard-lines (violating any = design spec is rejected)
 
 - No fake scarcity or countdown timers that reset.
@@ -61,8 +82,9 @@ Condensed from Nielsen's 10 + Krug; check while writing the section breakdown:
 
 ## 5. Quick diagnostic — 10 questions (QA delegates; main session runs it with eyes on the preview)
 
-The QA is headless: it writes this diagnostic into its report checklist. The main
-session answers them while driving the live preview (craft step 6 / polish step 2).
+The QA answers what its screenshots can show (questions 1, 2, 4, 5, 7, 8) and lists
+the rest for the main session, which answers them while driving the live preview
+(craft step 6 / polish step 2). Both also check the §3b states that apply.
 Each "no" = finding with **severity 0-4** + one-line evidence.
 
 1. Within 5 seconds on the hero: is it obvious what this page offers and for whom?
@@ -86,10 +108,12 @@ regardless of how good it looks.
 - [ ] design.md opens with who + JTBD + context (from copy.md/request, not invented)
 - [ ] **Principles used**: 3-5 principles, each mapped to a concrete section
 - [ ] §3 checklist passed on the section breakdown
+- [ ] §3b states and microcopy written for every interactive element
 - [ ] Zero §4 violations
 
 **QA / main session:**
-- [ ] 10-question diagnostic in the QA report checklist, answered in the taste loop
+- [ ] 10-question diagnostic: screenshot-visible questions answered by QA, the rest answered in the taste loop
+- [ ] §3b states checked on the elements the page has
 - [ ] Severity 3+ findings explicitly on the punch-list
 
 > Credits: adapted for this template from the `ux-research` skill in

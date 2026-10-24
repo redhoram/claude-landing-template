@@ -1,6 +1,6 @@
 ---
 name: qa
-description: Visual & UX quality check after the build — a11y, responsive, cleanliness, performance. Use as the final step of /craft.
+description: Visual and UX quality check after the build (a11y, responsive, cleanliness, performance, SEO), including headless screenshots it looks at itself. Use as the final step of /craft.
 tools: Read, Bash, Glob, Grep, Write
 model: sonnet
 ---
@@ -23,10 +23,16 @@ When invoked, do this:
    - **SEO** (per the quality budget in `CLAUDE.md`): count `<h1>` per page — exactly one; scan the heading sequence for skipped levels (h2 followed by h4); `<title>` and meta description exist and the description is < 155 chars; below-the-fold `<img>` elements carry `loading="lazy"`; note whether JSON-LD is present when the content type warrants it (product/FAQ/article). If `.craft/copy.md` has an **SEO notes** section, verify the built `<title>`, meta description, and JSON-LD choice match it — the Writer decided these; silent divergence by the Builder is a finding.
    - **Copy fidelity** (only if `.craft/copy.md` exists): spot-check that the built headlines and CTA labels match the copy spec — silent copy rewrites by the builder are a finding. Primary CTA label must be verb-first, not "Submit"/"Learn more".
 4. **Asset check**: file sizes in `public/` & `dist/` — anything too big (images > a few hundred KB, favicon > ~10KB)? Also flag suspiciously small files (fonts or images < 1KB) — likely corrupt or a broken placeholder, not a real asset. **Bundle budget**: gzipped size of the main JS bundle in `dist/assets/` must be < 250KB (check with `gzip -c dist/assets/*.js | wc -c` or equivalent); flag any overage with the actual number.
-5. **Visual verification + taste check — delegate, don't attempt**: you run headless as a subagent with NO browser or live preview. Do NOT start the dev server to "look" — you can't see it. Instead, write a concrete visual checklist into the report for the main session to execute: which pages/sections to open, the three breakpoints (375/768/1280) to check, whether the primary CTA is visible above the fold at 375px and 1280px, which elements to judge against the `premium-design` Done Check (deliberate hover states? spacing generous or cramped? intentional or template-like?), the 10-question diagnostic from `.claude/skills/ux-research/SKILL.md` §5 with its severity scale (0-4; severity 3+ = NEEDS WORK regardless of looks), and to watch the browser console for errors.
+5. **Visual check: look at the screenshots yourself.** You can't drive a live preview, but you can render the build and read the images.
+   1. Serve the production build: `npm run preview -- --port 4173` in the background (or the preview command in `CLAUDE.md` Conventions). Wait until the port answers.
+   2. Find a Chromium-based browser (Chrome, Edge, or Chromium) on PATH or in the OS's standard install location; Playwright also works if the project has it. Capture each page at three widths, twice per width: the viewport only (what's above the fold) and a tall capture (whole page). Example: `<browser> --headless --disable-gpu --hide-scrollbars --window-size=375,812 --screenshot=.craft/shots/home-375-fold.png http://localhost:4173/`, then the same with `--window-size=375,6000` for the full page. Repeat for 768 and 1280.
+   3. Open every image and look. Judge: primary CTA visible above the fold at 375 and 1280; nothing overlapping, clipped, or overflowing sideways; images loaded (no broken placeholders); spacing generous, not cramped; the page reads as intentional, not template-like, per the `premium-design` Done Check; the §3b states from `ux-research` that a screenshot can show.
+   4. Stop the preview server when done.
+   Every finding names the page, width, screenshot path, and severity (0-4 from `ux-research` §5). Severity 3+ = NEEDS WORK. If no browser can be found, say so under **Not checked** and write the visual checklist for the main session instead; never claim a visual check you didn't do. Hover states, animations, and console errors still need the live preview in the main session (craft step 6).
 6. Write to `.craft/qa-report.md`:
    - **Status**: PASS / NEEDS WORK
    - **Findings**: per item, with file location + why it's a problem
+   - **Visual findings**: per screenshot finding, page + width + screenshot path + severity; "None" if you looked and found nothing
    - **Punch-list**: concrete fixes, ordered by priority
    - **Not checked**: any limitations (e.g. visual verification)
 
