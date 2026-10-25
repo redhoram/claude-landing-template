@@ -24,7 +24,7 @@ Design is iterative & visual (see → change → see again). Forcing a five-stag
 Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 
 - **QA looks, not just greps**: after the static checks, the QA serves the production build, captures headless screenshots at 375, 768, and 1280px (above the fold and full page), and judges them itself. Severity 3+ visual findings mean NEEDS WORK. Hover, motion, and console are still checked live in the main session.
-- **Honest copy by source**: the writer takes claims, numbers, testimonials, and logos only from the `Content sources` section of `CLAUDE.md`; everything else is marked illustrative. Indonesian AI clichés are filtered too, and `humanizer` runs on the copy when installed.
+- **Honest copy by source**: the writer takes claims, numbers, testimonials, and logos only from the `Content sources` section of `CLAUDE.md`; everything else is marked illustrative. Indonesian AI clichés are filtered too, and the bundled `humanizer` skill runs on the copy.
 - **Audit trail and commit**: each `/craft` run archives the previous `.craft/` files instead of deleting them, and on PASS offers a commit of the built files, staged by explicit path. It never pushes without your confirmation.
 - **Model override**: change any agent's model per project in `CLAUDE.md`, without editing the agent file.
 
@@ -43,7 +43,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `CLAUDE.md`: the heart of the template, holding brand/design system + design principles + quality budget + workflow. **Fill in the placeholders first.**
 - `.claude/agents/`: `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/`: `craft`, `polish`
-- `.claude/skills/`: 9 bundled skills the agents enforce (matrix below)
+- `.claude/skills/`: 10 bundled skills the agents enforce (matrix below)
 - `.craft/`: handoff workspace (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), with past runs in `.craft/archive/`
 
 ### Skill matrix
@@ -54,6 +54,7 @@ Each agent reads only the skills that belong to its stage: documented here so th
 |---|---|---|
 | `conversion-copy` | writer | Headline formulas + specificity test, PAS-vs-AIDA arc choice, honest proof hierarchy, objection preemption, CTA/microcopy and language rules |
 | `seo-content-strategist` | writer + qa | SEO decided at write time: heading hierarchy as content structure, keyword placement, title/meta as ad copy, JSON-LD choice, alt text; recorded in copy.md's SEO notes; QA verifies the build matches them |
+| `humanizer` | writer | Removes AI writing patterns from the finished copy: staged contrasts, one-line closers, forced triads, inflated claims, bold labels, filler |
 | `premium-design` | designer | Palette discipline, typography metrics, intentional motion, marketing-vs-product intensity |
 | `ux-research` | designer + qa | User + JTBD grounding, 3-5 named psychology principles per surface, usability checklist, interaction states and microcopy (pending, loading, failure, focus, touch targets), dark-pattern hard-lines; its 10-question diagnostic (severity 0-4) is split between QA screenshots and the live taste loop |
 | `web-quality` | builder | Write-time patterns that hit the budget numbers: LCP preload, CLS dimensions, INP feedback, bundle discipline, Tailwind v4 idiom; adapted from Google Chrome team's [web-quality-skills](https://github.com/addyosmani/web-quality-skills) (MIT) |
@@ -89,5 +90,6 @@ And **fail loud, not silent**: the copy and design specs carry READY/BLOCKED sta
 
 **Included skills adapted from others**
 - `antislop` and its companion skills: adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 by miqdadbadjuber, MIT License (`.claude/skills/antislop/LICENSE`). Changes: no install wizard or mode question, a fixed mode per agent, a theme toggle only when asked, and no em dash or emoji characters.
+- `humanizer` v3.1.0 by Siqi Chen, MIT License (`.claude/skills/humanizer/LICENSE`), included unchanged; its examples keep the dashes and emoji it teaches you to remove.
 
 Built with [Claude Code](https://claude.com/claude-code).
