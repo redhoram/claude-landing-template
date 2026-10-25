@@ -24,7 +24,7 @@ Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline b
 Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
 - **QA ngeliat, bukan cuma grep**: setelah cek statis, QA menyajikan build produksi, ngambil screenshot headless di 375, 768, dan 1280px (bagian atas lipatan dan halaman penuh), lalu menilainya sendiri. Temuan visual severity 3 ke atas berarti NEEDS WORK. Hover, animasi, dan console tetap dicek langsung di main session.
-- **Copy jujur sesuai sumber**: writer cuma ngambil klaim, angka, testimoni, dan logo dari section `Content sources` di `CLAUDE.md`; selebihnya ditandai ilustratif. Klise AI bahasa Indonesia juga disaring, dan `humanizer` dijalankan ke copy kalau terpasang.
+- **Copy jujur sesuai sumber**: writer cuma ngambil klaim, angka, testimoni, dan logo dari section `Content sources` di `CLAUDE.md`; selebihnya ditandai ilustratif. Klise AI bahasa Indonesia juga disaring, dan skill `humanizer` bawaan dijalankan ke copy.
 - **Jejak audit dan commit**: tiap `/craft` mindahin file `.craft/` lama ke arsip, bukan ngehapus, dan saat PASS nawarin commit file yang dibangun, di-stage per path. Nggak pernah push tanpa konfirmasimu.
 - **Model override**: model tiap agent bisa diganti per project di `CLAUDE.md`, tanpa ngedit file agent.
 
@@ -43,7 +43,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `CLAUDE.md`: jantungnya, berisi brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
 - `.claude/agents/`: `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/`: `craft`, `polish`
-- `.claude/skills/`: 9 skill bawaan yang ditegakkan para agent (matriks di bawah)
+- `.claude/skills/`: 10 skill bawaan yang ditegakkan para agent (matriks di bawah)
 - `.craft/`: workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), dengan run lama di `.craft/archive/`
 
 ### Matriks skill
@@ -54,6 +54,7 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 |---|---|---|
 | `conversion-copy` | writer | Formula headline + tes spesifisitas, pilihan arc PAS-vs-AIDA, hierarki bukti jujur, penanganan objection, aturan CTA/microcopy dan bahasa |
 | `seo-content-strategist` | writer + qa | SEO diputusin saat nulis: hierarki heading sebagai struktur konten, penempatan keyword, title/meta sebagai ad copy, pilihan JSON-LD, alt text; dicatat di SEO notes copy.md; QA verifikasi build-nya cocok |
+| `humanizer` | writer | Membuang pola tulisan AI dari copy yang sudah jadi: kontras yang dibuat-buat, kalimat penutup dramatis, triad paksaan, klaim yang digelembungkan, label tebal, kata pengisi |
 | `premium-design` | designer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
 | `ux-research` | designer + qa | Landasan user + JTBD, 3-5 prinsip psikologi bernama per surface, checklist usability, state interaksi dan microcopy (pending, loading, gagal, fokus, target sentuh), garis keras anti dark-pattern; diagnostik 10 pertanyaan (severity 0-4) dibagi antara screenshot QA dan taste loop langsung |
 | `web-quality` | builder | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4; adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
@@ -89,5 +90,6 @@ Dan **gagal keras, bukan diam-diam**: copy spec dan design spec bawa flag status
 
 **Skill bawaan hasil adaptasi**
 - `antislop` dan skill pendampingnya: diadaptasi dari [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 karya miqdadbadjuber, Lisensi MIT (`.claude/skills/antislop/LICENSE`). Perubahan: tanpa wizard instalasi dan pertanyaan mode, mode tetap per agent, toggle tema hanya kalau diminta, dan tanpa karakter em dash atau emoji.
+- `humanizer` v3.1.0 karya Siqi Chen, Lisensi MIT (`.claude/skills/humanizer/LICENSE`), disertakan tanpa perubahan; contoh di dalamnya tetap memuat dash dan emoji yang justru diajarkan untuk dibuang.
 
 Dibangun dengan [Claude Code](https://claude.com/claude-code).
