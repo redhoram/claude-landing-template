@@ -43,7 +43,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - `CLAUDE.md`: the heart of the template, holding brand/design system + design principles + quality budget + workflow. **Fill in the placeholders first.**
 - `.claude/agents/`: `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/`: `craft`, `polish`
-- `.claude/skills/`: 5 bundled skills the agents enforce (matrix below)
+- `.claude/skills/`: 9 bundled skills the agents enforce (matrix below)
 - `.craft/`: handoff workspace (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), with past runs in `.craft/archive/`
 
 ### Skill matrix
@@ -57,6 +57,10 @@ Each agent reads only the skills that belong to its stage: documented here so th
 | `premium-design` | designer | Palette discipline, typography metrics, intentional motion, marketing-vs-product intensity |
 | `ux-research` | designer + qa | User + JTBD grounding, 3-5 named psychology principles per surface, usability checklist, interaction states and microcopy (pending, loading, failure, focus, touch targets), dark-pattern hard-lines; its 10-question diagnostic (severity 0-4) is split between QA screenshots and the live taste loop |
 | `web-quality` | builder | Write-time patterns that hit the budget numbers: LCP preload, CLS dimensions, INP feedback, bundle discipline, Tailwind v4 idiom; adapted from Google Chrome team's [web-quality-skills](https://github.com/addyosmani/web-quality-skills) (MIT) |
+| `antislop` | designer + builder + qa | Core filter adapted from anti-slop: a purpose test for every visual technique, 38 rules in three tiers, the Design Read with ENERGY/RHYTHM/MOTION dials, and a Delivery Gate report with evidence |
+| `antislop-ui` | designer + builder + qa | Generic AI UI patterns with tell, why, and fix: default gradients, glassmorphism everywhere, bento grids, fake terminals, eyebrow badges, invented stats, dead controls |
+| `antislop-layoutmobile` | builder + qa | Reflow from phone to desktop: breakpoints, fluid scale, collapsing grids, overflow, tap targets, mobile navigation |
+| `antislop-human` | builder + qa | Contrast computed with `contrast-check.py`, keyboard and focus, color-only feedback, UI states, zoom |
 
 ### Prerequisites
 
@@ -82,5 +86,8 @@ And **fail loud, not silent**: the copy and design specs carry READY/BLOCKED sta
 
 **Author**
 - Redho Ramadhani: [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
+
+**Included skills adapted from others**
+- `antislop` and its companion skills: adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 by miqdadbadjuber, MIT License (`.claude/skills/antislop/LICENSE`). Changes: no install wizard or mode question, a fixed mode per agent, a theme toggle only when asked, and no em dash or emoji characters.
 
 Built with [Claude Code](https://claude.com/claude-code).

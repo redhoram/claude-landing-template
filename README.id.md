@@ -43,7 +43,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - `CLAUDE.md`: jantungnya, berisi brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
 - `.claude/agents/`: `writer`, `designer`, `builder`, `qa`
 - `.claude/commands/`: `craft`, `polish`
-- `.claude/skills/`: 5 skill bawaan yang ditegakkan para agent (matriks di bawah)
+- `.claude/skills/`: 9 skill bawaan yang ditegakkan para agent (matriks di bawah)
 - `.craft/`: workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), dengan run lama di `.craft/archive/`
 
 ### Matriks skill
@@ -57,6 +57,10 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 | `premium-design` | designer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
 | `ux-research` | designer + qa | Landasan user + JTBD, 3-5 prinsip psikologi bernama per surface, checklist usability, state interaksi dan microcopy (pending, loading, gagal, fokus, target sentuh), garis keras anti dark-pattern; diagnostik 10 pertanyaan (severity 0-4) dibagi antara screenshot QA dan taste loop langsung |
 | `web-quality` | builder | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4; adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
+| `antislop` | designer + builder + qa | Filter inti hasil adaptasi anti-slop: uji tujuan untuk tiap teknik visual, 38 aturan dalam tiga tingkat, Design Read dengan dial ENERGY/RHYTHM/MOTION, dan laporan Delivery Gate beserta buktinya |
+| `antislop-ui` | designer + builder + qa | Pola UI khas AI lengkap dengan ciri, alasan, dan perbaikannya: gradien default, glassmorphism di mana-mana, bento grid, terminal palsu, badge di atas headline, statistik karangan, tombol mati |
+| `antislop-layoutmobile` | builder + qa | Tata letak yang menyesuaikan dari ponsel ke desktop: breakpoint, skala fluid, grid yang menumpuk, overflow, target sentuh, navigasi mobile |
+| `antislop-human` | builder + qa | Kontras yang dihitung dengan `contrast-check.py`, keyboard dan fokus, umpan balik yang hanya mengandalkan warna, state UI, zoom |
 
 ### Prasyarat
 
@@ -82,5 +86,8 @@ Dan **gagal keras, bukan diam-diam**: copy spec dan design spec bawa flag status
 
 **Author**
 - Redho Ramadhani: [linkedin.com/in/redhoramadhanihamid](https://id.linkedin.com/in/redhoramadhanihamid) · [github.com/redhoram](https://github.com/redhoram)
+
+**Skill bawaan hasil adaptasi**
+- `antislop` dan skill pendampingnya: diadaptasi dari [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 karya miqdadbadjuber, Lisensi MIT (`.claude/skills/antislop/LICENSE`). Perubahan: tanpa wizard instalasi dan pertanyaan mode, mode tetap per agent, toggle tema hanya kalau diminta, dan tanpa karakter em dash atau emoji.
 
 Dibangun dengan [Claude Code](https://claude.com/claude-code).

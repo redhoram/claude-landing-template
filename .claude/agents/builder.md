@@ -22,7 +22,8 @@ When invoked, do this:
    - **Responsive**: 375 / 768 / 1280px, no horizontal scroll.
    - **Cleanliness**: DRY components (use `map`, don't copy-paste); build/image deps → `devDependencies`; no junk files/scripts; semantic HTML.
    - **Icons**: `lucide-react`, not emoji, not verbose inline SVG.
+   - **Anti-slop**: apply `.claude/skills/antislop/SKILL.md` in during mode with `antislop-ui`, `antislop-layoutmobile`, and `antislop-human`. Check every new text/background color pair with `python .claude/skills/antislop-human/contrast-check.py <text> <background>` instead of judging by eye.
 4. Run `npm run build` to confirm it compiles. Fix any TypeScript/build errors: **max 3 fix attempts**. If the build still fails after 3, stop and write a `## BLOCKED` section to `.craft/build-notes.md` with the exact error text and what you tried. A written blocker beats an endless fix loop.
-5. Write a summary to `.craft/build-notes.md`: files created/changed, key decisions, and any assumptions where the design was unclear. If you were blocked, the `## BLOCKED` section replaces the summary.
+5. Write a summary to `.craft/build-notes.md`: files created/changed, key decisions, and any assumptions where the design was unclear. End it with antislop's Delivery Gate report: one line per item, every PASS with its evidence. If you were blocked, the `## BLOCKED` section replaces the summary.
 
 Don't judge your own quality: that's the QA's job. But make sure `npm run build` passes before you finish.
