@@ -16,7 +16,7 @@ When invoked, do this:
 3. **Static checks** (via Grep/Read):
    - Accessibility: `<img>` without `alt`, icon buttons without `aria-label`, emoji used as icons, color as the only indicator.
    - Cleanliness: build/image deps stuck in `dependencies` (should be `devDependencies`); junk files/scripts; copy-pasted markup blocks (should be `map`).
-   - Contrast: text/bg pairings that violate the rules in `CLAUDE.md`.
+   - Contrast: text/bg pairings that violate the rules in `CLAUDE.md`. Compute each pair with `python .claude/skills/antislop-human/contrast-check.py <text> <background>`; never judge contrast by eye.
    - **Aesthetic DoD** (static): grep for raw Tailwind color classes; every color should trace to a `@theme` palette token. Use this exact regex so nothing slips through:
      `(text|bg|border|ring|from|to|via|fill|stroke|divide|outline|shadow)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]{2,3}`
      Flag every hit. Also check that a display font and a body font are set (not left to system default).
@@ -29,6 +29,7 @@ When invoked, do this:
    3. Open every image and look. Judge: primary CTA visible above the fold at 375 and 1280; nothing overlapping, clipped, or overflowing sideways; images loaded (no broken placeholders); spacing generous, not cramped; the page reads as intentional, not template-like, per the `premium-design` Done Check; the §3b states from `ux-research` that a screenshot can show.
    4. Stop the preview server when done.
    Every finding names the page, width, screenshot path, and severity (0-4 from `ux-research` §5). Severity 3+ = NEEDS WORK. If no browser can be found, say so under **Not checked** and write the visual checklist for the main session instead; never claim a visual check you didn't do. Hover states, animations, and console errors still need the live preview in the main session (craft step 6).
+5b. **Anti-slop audit** (after mode): read `.claude/skills/antislop/SKILL.md` (its section "How this template runs antislop" first), `antislop-ui`, `antislop-layoutmobile`, and `antislop-human`. Run the Delivery Gate and the three skill checklists against the code and your screenshots. Each failure is a finding that cites its rule (R-XX), with severity from the core's adaptation section (a Hard Gate FAIL is severity 3). Check that `.craft/build-notes.md` ends with the builder's Delivery Gate report; a PASS line with no evidence is a finding.
 6. Write to `.craft/qa-report.md`:
    - **Status**: PASS / NEEDS WORK
    - **Findings**: per item, with file location + why it's a problem
