@@ -24,8 +24,8 @@ each other: decide both together, in `.craft/copy.md`.
   page owns its URL) the slug. Once each is enough: placement beats repetition.
 - Secondary keywords go in H2s ONLY where they fit the message; never bend a heading to
   stuff a keyword. A heading that reads awkwardly loses more visitors than it gains clicks.
-- Record the chosen primary keyword at the top of the copy's SEO notes so the Designer
-  and Builder preserve the placements.
+- Record the chosen primary keyword at the top of the copy's SEO notes so the Composer
+  and Developer preserve the placements.
 
 ## 3. Meta tags: organic ad copy
 
@@ -33,7 +33,7 @@ each other: decide both together, in `.craft/copy.md`.
 - Meta description: <155 chars, written as ad copy: outcome + differentiator + a soft CTA.
   It doesn't affect ranking; it affects CLICK-THROUGH. Write it like the one sentence that
   wins the click on a results page.
-- Both go into `.craft/copy.md` under **SEO notes**: the Builder implements them verbatim.
+- Both go into `.craft/copy.md` under **SEO notes**: the Developer implements them verbatim.
 
 ## 4. Structured data (JSON-LD)
 
@@ -48,7 +48,7 @@ each other: decide both together, in `.craft/copy.md`.
 - Every meaningful image gets alt text describing what it SHOWS in context ("dashboard
   filtering candidates by skill": not "image1", not a keyword string).
 - Decorative images: empty `alt=""`, because decoration described is noise for screen readers.
-- Specify alt text in the copy/design spec for every named image asset, so the Builder
+- Specify alt text in the copy/design spec for every named image asset, so the Developer
   never invents it.
 
 ## Done check
