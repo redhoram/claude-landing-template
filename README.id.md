@@ -18,7 +18,7 @@ Template framework untuk **landing page & aplikasi sederhana**: berat di desain 
 
 Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline batch lima-tahap di sini malah mematikan loop itu. Jadi framework ini punya **dua mode**:
 
-- **0→1 lewat `/craft [halaman/section]`**: spin-up draft kuat dari nol lewat 4 subagent (copywriter → composer → developer → qa). Copy dulu: copywriter menetapkan hierarki pesan + headline/CTA persis, baru composer menata layoutnya. Buat dapetin fondasi cepat.
+- **0→1 lewat `/craft [halaman/section]`**: spin-up draft kuat dari nol lewat subagent (curator dan optimizer kalau perlu → copywriter → composer → developer → qa), lalu loop taste dan vonis inspector. Copy dulu: copywriter menetapkan hierarki pesan + headline/CTA persis, baru composer menata layoutnya. Buat dapetin fondasi cepat.
 - **1→bagus, interaktif atau `/polish [target]`**: poles di main session pakai live preview. Di sinilah desain jadi tajam.
 
 Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
@@ -33,18 +33,18 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 | | `_pipeline-template` (CRUD kompleks) | `_landing-template` (landing & app sederhana) |
 |---|---|---|
 | Mode | Batch, doc-driven, fire-and-forget | Loop visual + interaktif |
-| Agent | planner → drafter → coder → tester → gatekeeper (→ deployer after SHIP) | copywriter → composer → developer → qa |
-| Gate akhir | Gatekeeper (SHIP/BLOCK, fokus keamanan) | QA (punch-list, fokus UI/UX) |
-| Command | `/ship` (fitur baru) + `/fix` (revisi) | `/craft` (0→1) + `/polish` (1→bagus) |
+| Agent | planner → drafter → coder → tester → gatekeeper (→ deployer setelah SHIP) | curator → optimizer → copywriter → composer → developer → qa → inspector |
+| Gate akhir | Gatekeeper (SHIP/BLOCK, fokus keamanan) | Inspector (SHIP/REVISE/HOLD atas brief, brand, dan taste), setelah punch-list QA |
+| Command | `/ship` (fitur baru) + `/fix` (revisi) | `/craft` (0→1) + `/polish` (1→bagus) + `/brand` + `/seo-audit` |
 | Verifikasi | build/lint/test + skenario + screenshot | screenshot QA + live preview: render, responsif, console |
 
 ### Isi
 
 - `CLAUDE.md`: jantungnya, berisi brand/design system + prinsip desain + anggaran kualitas + mode kerja. **Isi placeholder-nya dulu.**
-- `.claude/agents/`: `copywriter`, `composer`, `developer`, `qa`
-- `.claude/commands/`: `craft`, `polish`
+- `.claude/agents/`: `curator`, `optimizer`, `copywriter`, `composer`, `developer`, `qa`, `inspector`
+- `.claude/commands/`: `craft`, `polish`, `brand`, `seo-audit`
 - `.claude/skills/`: 10 skill bawaan yang ditegakkan para agent (matriks di bawah)
-- `.craft/`: workspace handoff (`copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `shots/`), dengan run lama di `.craft/archive/`
+- `.craft/`: workspace handoff (`brief.md`, `brand.md`, `seo.md`, `copy.md`, `design.md`, `build-notes.md`, `qa-report.md`, `taste-notes.md`, `verdict.md`, `shots/`), dengan run lama di `.craft/archive/`
 
 ### Matriks skill
 
@@ -53,15 +53,15 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 | Skill | Dipakai oleh | Menegakkan |
 |---|---|---|
 | `conversion-copy` | copywriter | Formula headline + tes spesifisitas, pilihan arc PAS-vs-AIDA, hierarki bukti jujur, penanganan objection, aturan CTA/microcopy dan bahasa |
-| `seo-content-strategist` | copywriter + qa | SEO diputusin saat nulis: hierarki heading sebagai struktur konten, penempatan keyword, title/meta sebagai ad copy, pilihan JSON-LD, alt text; dicatat di SEO notes copy.md; QA verifikasi build-nya cocok |
+| `seo-content-strategist` | optimizer + copywriter + qa | SEO diputusin saat nulis: hierarki heading sebagai struktur konten, penempatan keyword, title/meta sebagai ad copy, pilihan JSON-LD, alt text; dicatat di SEO notes copy.md; QA verifikasi build-nya cocok |
 | `humanizer` | copywriter | Membuang pola tulisan AI dari copy yang sudah jadi: kontras yang dibuat-buat, kalimat penutup dramatis, triad paksaan, klaim yang digelembungkan, label tebal, kata pengisi |
-| `premium-design` | composer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
+| `premium-design` | curator + composer | Disiplin palet, metrik tipografi, motion yang disengaja, intensitas marketing-vs-product |
 | `ux-research` | composer + qa | Landasan user + JTBD, 3-5 prinsip psikologi bernama per surface, checklist usability, state interaksi dan microcopy (pending, loading, gagal, fokus, target sentuh), garis keras anti dark-pattern; diagnostik 10 pertanyaan (severity 0-4) dibagi antara screenshot QA dan taste loop langsung |
 | `web-quality` | developer | Pola write-time pencapai angka budget: preload LCP, dimensi anti-CLS, feedback INP, disiplin bundle, idiom Tailwind v4; adaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) tim Google Chrome (MIT) |
 | `antislop` | composer + developer + qa | Filter inti hasil adaptasi anti-slop: uji tujuan untuk tiap teknik visual, 38 aturan dalam tiga tingkat, Design Read dengan dial ENERGY/RHYTHM/MOTION, dan laporan Delivery Gate beserta buktinya |
-| `antislop-ui` | composer + developer + qa | Pola UI khas AI lengkap dengan ciri, alasan, dan perbaikannya: gradien default, glassmorphism di mana-mana, bento grid, terminal palsu, badge di atas headline, statistik karangan, tombol mati |
+| `antislop-ui` | curator + composer + developer + qa | Pola UI khas AI lengkap dengan ciri, alasan, dan perbaikannya: gradien default, glassmorphism di mana-mana, bento grid, terminal palsu, badge di atas headline, statistik karangan, tombol mati |
 | `antislop-layoutmobile` | developer + qa | Tata letak yang menyesuaikan dari ponsel ke desktop: breakpoint, skala fluid, grid yang menumpuk, overflow, target sentuh, navigasi mobile |
-| `antislop-human` | developer + qa | Kontras yang dihitung dengan `contrast-check.py`, keyboard dan fokus, umpan balik yang hanya mengandalkan warna, state UI, zoom |
+| `antislop-human` | curator + developer + qa | Kontras yang dihitung dengan `contrast-check.py`, keyboard dan fokus, umpan balik yang hanya mengandalkan warna, state UI, zoom |
 
 ### Prasyarat
 
@@ -72,7 +72,7 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 ### Bikin project baru
 
 1. Copy `_landing-template` → rename folder
-2. Isi `CLAUDE.md`: terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam) dan **Content sources** (apa yang boleh diklaim copywriter)
+2. Isi `CLAUDE.md`: terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam; kosongin aja dan curator yang mengisinya) dan **Content sources** (apa yang boleh diklaim copywriter)
 3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react), atau skip aja: `/craft` auto-scaffold kalau `package.json` belum ada
 4. `git init`
 5. Buka Claude Code di folder itu → jalankan `/craft [halaman/section]`
@@ -81,7 +81,7 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 
 Yang bikin output beda dari generator instan: **berani di desain, disiplin di kode.** Detail di prinsip & anggaran kualitas dalam `CLAUDE.md`.
 
-Dan **gagal keras, bukan diam-diam**: copy spec dan design spec bawa flag status READY/BLOCKED, developer bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak dia lakukan: dia menilai screenshot-nya sendiri, nulis "not checked" kalau nggak ada browser, dan nyerahin hover, animasi, dan console ke main session dengan mata di live preview.
+Dan **gagal keras, bukan diam-diam**: spec brand, rencana SEO, copy, dan design bawa flag status READY/BLOCKED, inspector memberi vonis tegas SHIP, REVISE, atau HOLD, developer bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak dia lakukan: dia menilai screenshot-nya sendiri, nulis "not checked" kalau nggak ada browser, dan nyerahin hover, animasi, dan console ke main session dengan mata di live preview.
 
 ### Kredit
 

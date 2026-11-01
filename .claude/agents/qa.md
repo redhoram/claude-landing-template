@@ -1,6 +1,6 @@
 ---
 name: qa
-description: Visual and UX quality check after the build (a11y, responsive, cleanliness, performance, SEO), including headless screenshots it looks at itself. Use as the final step of /craft.
+description: Visual and UX quality check after the build (a11y, responsive, cleanliness, performance, SEO), including headless screenshots it looks at itself. Use after the build in /craft; the inspector gives the final verdict.
 tools: Read, Bash, Glob, Grep, Write
 model: sonnet
 ---
@@ -16,11 +16,11 @@ When invoked, do this:
 3. **Static checks** (via Grep/Read):
    - Accessibility: `<img>` without `alt`, icon buttons without `aria-label`, emoji used as icons, color as the only indicator.
    - Cleanliness: build/image deps stuck in `dependencies` (should be `devDependencies`); junk files/scripts; copy-pasted markup blocks (should be `map`).
-   - Contrast: text/bg pairings that violate the rules in `CLAUDE.md`. Compute each pair with `python .claude/skills/antislop-human/contrast-check.py <text> <background>`; never judge contrast by eye.
+   - Contrast: text/bg pairings that violate the rules in `CLAUDE.md` or `.craft/brand.md`. Compute each pair with `python .claude/skills/antislop-human/contrast-check.py <text> <background>`; never judge contrast by eye.
    - **Aesthetic DoD** (static): grep for raw Tailwind color classes; every color should trace to a `@theme` palette token. Use this exact regex so nothing slips through:
      `(text|bg|border|ring|from|to|via|fill|stroke|divide|outline|shadow)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]{2,3}`
      Flag every hit. Also check that a display font and a body font are set (not left to system default).
-   - **SEO** (per the quality budget in `CLAUDE.md`): count `<h1>` per page (exactly one); scan the heading sequence for skipped levels (h2 followed by h4); `<title>` and meta description exist and the description is < 155 chars; below-the-fold `<img>` elements carry `loading="lazy"`; note whether JSON-LD is present when the content type warrants it (product/FAQ/article). If `.craft/copy.md` has an **SEO notes** section, verify the built `<title>`, meta description, and JSON-LD choice match it, because the Copywriter decided these; silent divergence by the Developer is a finding.
+   - **SEO** (per the quality budget in `CLAUDE.md`): count `<h1>` per page (exactly one); scan the heading sequence for skipped levels (h2 followed by h4); `<title>` and meta description exist and the description is < 155 chars; below-the-fold `<img>` elements carry `loading="lazy"`; note whether JSON-LD is present when the content type warrants it (product/FAQ/article). If `.craft/seo.md` exists, the build must match its heading outline, title, meta description, and JSON-LD choice. If `.craft/copy.md` has an **SEO notes** section, verify the built `<title>`, meta description, and JSON-LD choice match it, because the Copywriter decided these; silent divergence by the Developer is a finding.
    - **Copy fidelity** (only if `.craft/copy.md` exists): spot-check that the built headlines and CTA labels match the copy spec; silent copy rewrites by the developer are a finding. Primary CTA label must be verb-first, not "Submit"/"Learn more".
 4. **Asset check**: file sizes in `public/` & `dist/`. Anything too big (images > a few hundred KB, favicon > ~10KB)? Also flag suspiciously small files (fonts or images < 1KB), likely corrupt or a broken placeholder, not a real asset. **Bundle budget**: gzipped size of the main JS bundle in `dist/assets/` must be < 250KB (check with `gzip -c dist/assets/*.js | wc -c` or equivalent); flag any overage with the actual number.
 5. **Visual check: look at the screenshots yourself.** You can't drive a live preview, but you can render the build and read the images.

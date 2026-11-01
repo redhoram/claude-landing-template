@@ -41,14 +41,15 @@ This is a **landing page / simple app** project: heavy on design & content, ligh
 
 Design is iterative & visual. The main mode is interactive work in the main session: **edit → see it in live preview → adjust**. Run the dev server and actually look at the result; don't work blind.
 
-- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch (copywriter → composer → developer → qa; copy first, then layout). For getting a fast foundation.
+- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch. A short brief first, then the curator (only when the brand is empty) and the optimizer (only for pages meant to be found through search), then copywriter → composer → developer → qa, a taste loop in the main session, and the inspector's verdict (SHIP / REVISE / HOLD). Copy first, then layout. For getting a fast foundation.
+- **`/brand`**: run the curator on its own to set or redo the brand system in `.craft/brand.md`. **`/seo-audit [target]`**: run the optimizer in audit mode on a page that already exists. Both report; neither changes code.
 - **1→great, interactive or `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
 - DON'T use `/craft` for small tweaks: that kills the iteration loop.
-- Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the main session still drives the live preview for hover, motion, and console.
+- Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`, except `brand.md`, which belongs to the project. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the main session still drives the live preview for hover, motion, and console.
 
 ## Brand & Design System
 
-[REQUIRED: fill before starting. This is what keeps the output consistent & sharp.]
+[REQUIRED: fill before starting, or leave the bullets below empty and let the curator set them: it writes `.craft/brand.md` and replaces these bullets with a pointer. This is what keeps the output consistent & sharp.]
 
 - **Visual reference** (recommended): [URL or "looks like X". This becomes the taste benchmark for the composer. If you have one, put it here. If not, the composer will propose boldly.]
 - **Palette**: [colors + each color's role + CONTRAST RULES: which text/bg pairings are FORBIDDEN]. Normal text ≥ 4.5:1.
@@ -85,7 +86,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 ## Model override
 
-[Optional. Defaults are in each agent file: copywriter, composer, developer on `opus`; qa on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
+[Optional. Defaults are in each agent file: copywriter, composer, developer, curator, inspector on `opus`; qa, optimizer on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
 
 | Agent | Model | Why |
 |---|---|---|
