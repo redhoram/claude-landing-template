@@ -10,6 +10,8 @@ Real risk: committing here could push unrelated project code to the
 template's public repo. The user copies this folder on purpose to start new
 projects; this check exists so they can do that with zero manual steps.
 
+**Main session only.** Subagents skip this whole section: never move or re-init `.git` from a subagent.
+
 Before any other work, run `git remote -v` and look at the current folder name.
 
 1. **Original template: skip, touch nothing.** Folder name is
@@ -74,7 +76,22 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **Conversion basics**: primary CTA visible above the fold at 375px AND 1280px; CTA labels are verb-first and specific ("Start free", not "Submit"/"Learn more").
 - **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (build/image tools → `devDependencies`); no junk files/scripts in the repo; semantic HTML.
 - **No-JS resilience**: scroll-reveal hidden state must degrade gracefully; apply it via a JS-added class on `<body>`, not hardcoded as `opacity-0` in JSX initial state. Always respect `prefers-reduced-motion: reduce`.
-- **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims.
+- **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims. In spec files the marker is `[ILLUSTRATIVE]`. On the built page it becomes a small visible label next to the content (e.g. "Contoh" / "Example"), never the raw bracket tag. A heading never promises a feature that no content source backs; reword it as an intent ("Rencana kami: ...") or drop it.
+
+## Sources of truth (who wins when files disagree)
+
+Each `/craft` file owns one thing. When two disagree, the owner wins and the other agent records a deviation with its reason:
+
+| Question | Owner |
+|---|---|
+| Is this claim, number, testimonial, or logo real? | Content sources below; if they are still placeholders, `.craft/brief.md`; otherwise it is `[ILLUSTRATIVE]` |
+| Product, goal, audience | `.craft/brief.md`, then the first paragraph of this file |
+| Palette, type, rhythm, motion, voice and tone | `.craft/brand.md` (or the Brand section once filled) |
+| Heading structure, title, meta description, JSON-LD | `.craft/seo.md` for structure; wording follows the brand voice |
+| Exact page words | `.craft/copy.md` |
+| Layout and states | `.craft/design.md` |
+
+Spec files (`brief.md` through `verdict.md`) are written in English; page copy inside them is in the page language. When this file still holds placeholders, agents work from the brief and record the gap as an assumption; only the main session stops to ask.
 
 ## Content sources
 
