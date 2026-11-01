@@ -34,8 +34,9 @@ Thumbs.db
 .vite/
 
 # Craft scratchpads (regenerated on each /craft; old runs move to .craft/archive/).
-# Remove the three lines below if you want to commit copy/design/build-notes/qa-report, screenshots, and their archive.
+# brand.md is kept in git (it is the project's brand system). Remove the lines below if you also want to commit the other run files, screenshots, and their archive.
 .craft/*.md
+!.craft/brand.md
 .craft/shots/
 .craft/archive/
 
