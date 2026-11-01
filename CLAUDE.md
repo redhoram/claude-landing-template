@@ -4,23 +4,29 @@
 
 ## First thing in a fresh session: verify this isn't a hijacked template copy
 
-Before any other work, run `git remote -v`. If it shows
-`claude-landing-template.git` AND the placeholders in this file are already
-replaced (real project name above, not `[PROJECT NAME]`): this folder was
-copied or renamed from the template and still carries its full git history +
-GitHub remote. Real risk: committing here could push unrelated project code
-to the template's public repo.
+Copying this folder (e.g. via file explorer) also copies the hidden `.git`,
+so a new project silently inherits the template's history + GitHub remote.
+Real risk: committing here could push unrelated project code to the
+template's public repo. The user copies this folder on purpose to start new
+projects; this check exists so they can do that with zero manual steps.
 
-Fix immediately, before continuing with anything else:
-```
-rm -rf .git && git init && git add -A && git commit -m "chore: init from _landing-template"
-```
-Then confirm `git remote -v` is empty and `git log --oneline` shows exactly
-one commit. Only then proceed with the user's request.
+Before any other work, run `git remote -v` and look at the current folder name.
 
-Skip this check if the placeholders above are still unreplaced: that means
-this IS the original template, not a copy, and its git history must stay
-untouched.
+1. **Original template: skip, touch nothing.** Folder name is
+   `_landing-template` or `claude-landing-template`.
+2. **Not a copy: skip.** Remote does not contain `claude-landing-template`
+   (or there is no remote).
+3. **Copy: auto-fix without asking.** Any other folder name AND remote
+   contains `claude-landing-template`. Placeholder state does not matter.
+   Run immediately (bash), no confirmation needed. The old `.git` is moved
+   to the temp dir, not deleted, so nothing is lost. `git add -A` is safe
+   here only because the repo was just re-initialised and holds nothing yet:
+   ```
+   mv .git "/tmp/$(basename "$PWD")-template-git-$(date +%Y%m%d%H%M%S)" && git init -q && git add -A && git commit -q -m "chore: init from _landing-template"
+   ```
+   Confirm `git remote -v` is empty and `git log --oneline` shows exactly one
+   commit. Tell the user in ONE line that the template history was reset
+   (mention the backup path), then continue with their request.
 
 This is a **landing page / simple app** project: heavy on design & content, light on logic. The framework and workflow here are optimized for that, NOT for complex CRUD apps (use `_pipeline-template`, the 6-agent `/ship` batch pipeline, for those).
 
@@ -56,7 +62,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 1. **Bold by default.** For marketing pages, rich content + visual storytelling + micro-interactions ARE the product, not just a tidy layout. Propose a bold concept; don't play it safe/minimal without reason. If there's a reference ("like X"), use it as the benchmark.
 2. **Connect to the real product.** Tie copy & visuals to the product's actual capabilities/value, not generic filler.
 3. **Discipline = the differentiator from instant generators.** They look tidy but are messy underneath (dependencies in the wrong place, junk files, non-semantic HTML, heavy assets). You're the opposite.
-4. **Meet the `premium-design` bar.** This repo bundles a `premium-design` skill (`.claude/skills/premium-design/`); load it when designing or polishing. It encodes palette discipline, typography metrics, intentional motion, and context adaptation. The Brand & Design System above wins on any conflict. Three more bundled skills arm the other stages (full matrix in README): `conversion-copy` (copywriter: headline formulas, proof hierarchy, CTA rules), `humanizer` (copywriter: strips AI writing patterns from the finished copy), `ux-research` (composer + qa: psychology principles, usability diagnostic, anti-dark-pattern lines), `web-quality` (developer: the patterns that hit the performance numbers). Four `antislop` skills, adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) (MIT), filter generic AI UI patterns: the composer and developer apply them while working, and the qa audits with them.
+4. **Meet the `premium-design` bar.** This repo bundles a `premium-design` skill (`.claude/skills/premium-design/`); load it when designing or polishing. It encodes palette discipline, typography metrics, intentional motion, and context adaptation. The Brand & Design System above wins on any conflict. Five more bundled skills arm the other stages (full matrix in README): `conversion-copy` (copywriter: headline formulas, proof hierarchy, CTA rules), `seo-content-strategist` (copywriter + qa: SEO decided at write time), `humanizer` (copywriter: strips AI writing patterns from the finished copy), `ux-research` (composer + qa: psychology principles, usability diagnostic, anti-dark-pattern lines), `web-quality` (developer: the patterns that hit the performance numbers). Four `antislop` skills, adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) (MIT), filter generic AI UI patterns: the composer and developer apply them while working, and the qa audits with them.
 
 ## Quality budget (every build must meet this)
 
@@ -83,7 +89,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 | Agent | Model | Why |
 |---|---|---|
-| [e.g. qa] | [e.g. opus] | [e.g. visual judgment on a premium brand] |
+| [agent] | [model] | [why this agent needs a different model] |
 
 ## Assets
 
