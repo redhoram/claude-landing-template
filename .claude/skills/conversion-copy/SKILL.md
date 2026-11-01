@@ -90,5 +90,5 @@ one honest answer each. Strongest objection first, second-strongest last (serial
 - [ ] Zero banned phrases; "you" > "we"; skim-only read still tells the story
 
 > Credits: distilled from classic direct-response copywriting practice (Caples, Ogilvy,
-> Schwartz lineage: public methodology, written in our own words) for the Writer agent
+> Schwartz lineage: public methodology, written in our own words) for the Copywriter agent
 > of this template.

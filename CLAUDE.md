@@ -35,7 +35,7 @@ This is a **landing page / simple app** project: heavy on design & content, ligh
 
 Design is iterative & visual. The main mode is interactive work in the main session: **edit → see it in live preview → adjust**. Run the dev server and actually look at the result; don't work blind.
 
-- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch (writer → designer → builder → qa; copy first, then layout). For getting a fast foundation.
+- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch (copywriter → composer → developer → qa; copy first, then layout). For getting a fast foundation.
 - **1→great, interactive or `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
 - DON'T use `/craft` for small tweaks: that kills the iteration loop.
 - Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the main session still drives the live preview for hover, motion, and console.
@@ -44,7 +44,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 [REQUIRED: fill before starting. This is what keeps the output consistent & sharp.]
 
-- **Visual reference** (recommended): [URL or "looks like X". This becomes the taste benchmark for the designer. If you have one, put it here. If not, the designer will propose boldly.]
+- **Visual reference** (recommended): [URL or "looks like X". This becomes the taste benchmark for the composer. If you have one, put it here. If not, the composer will propose boldly.]
 - **Palette**: [colors + each color's role + CONTRAST RULES: which text/bg pairings are FORBIDDEN]. Normal text ≥ 4.5:1.
 - **Typography**: [display + body fonts, heading scale]
 - **Section rhythm** (for landing): [order of section colors/tones so the page has rhythm]
@@ -56,7 +56,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 1. **Bold by default.** For marketing pages, rich content + visual storytelling + micro-interactions ARE the product, not just a tidy layout. Propose a bold concept; don't play it safe/minimal without reason. If there's a reference ("like X"), use it as the benchmark.
 2. **Connect to the real product.** Tie copy & visuals to the product's actual capabilities/value, not generic filler.
 3. **Discipline = the differentiator from instant generators.** They look tidy but are messy underneath (dependencies in the wrong place, junk files, non-semantic HTML, heavy assets). You're the opposite.
-4. **Meet the `premium-design` bar.** This repo bundles a `premium-design` skill (`.claude/skills/premium-design/`); load it when designing or polishing. It encodes palette discipline, typography metrics, intentional motion, and context adaptation. The Brand & Design System above wins on any conflict. Three more bundled skills arm the other stages (full matrix in README): `conversion-copy` (writer: headline formulas, proof hierarchy, CTA rules), `humanizer` (writer: strips AI writing patterns from the finished copy), `ux-research` (designer + qa: psychology principles, usability diagnostic, anti-dark-pattern lines), `web-quality` (builder: the patterns that hit the performance numbers). Four `antislop` skills, adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) (MIT), filter generic AI UI patterns: the designer and builder apply them while working, and the qa audits with them.
+4. **Meet the `premium-design` bar.** This repo bundles a `premium-design` skill (`.claude/skills/premium-design/`); load it when designing or polishing. It encodes palette discipline, typography metrics, intentional motion, and context adaptation. The Brand & Design System above wins on any conflict. Three more bundled skills arm the other stages (full matrix in README): `conversion-copy` (copywriter: headline formulas, proof hierarchy, CTA rules), `humanizer` (copywriter: strips AI writing patterns from the finished copy), `ux-research` (composer + qa: psychology principles, usability diagnostic, anti-dark-pattern lines), `web-quality` (developer: the patterns that hit the performance numbers). Four `antislop` skills, adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) (MIT), filter generic AI UI patterns: the composer and developer apply them while working, and the qa audits with them.
 
 ## Quality budget (every build must meet this)
 
@@ -71,7 +71,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 ## Content sources
 
-[Where real claims come from. The writer uses ONLY these for numbers, testimonials, client logos, awards, and feature claims; anything else is marked `[ILLUSTRATIVE]`. Delete the lines that don't apply.]
+[Where real claims come from. The copywriter uses ONLY these for numbers, testimonials, client logos, awards, and feature claims; anything else is marked `[ILLUSTRATIVE]`. Delete the lines that don't apply.]
 
 - Product facts and features: [e.g. `docs/product.md`, or "the request"]
 - Numbers and results: [e.g. `docs/metrics.md`, or "none yet: mark illustrative"]
@@ -79,7 +79,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 
 ## Model override
 
-[Optional. Defaults are in each agent file: writer, designer, builder on `opus`; qa on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
+[Optional. Defaults are in each agent file: copywriter, composer, developer on `opus`; qa on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
 
 | Agent | Model | Why |
 |---|---|---|

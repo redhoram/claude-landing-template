@@ -1,6 +1,6 @@
 ---
 name: ux-research
-description: Use when writing a design spec or judging a built page. Behavioral grounding for the Designer (who the user is, which psychology principles apply, ethics hard-lines) and a 10-question usability diagnostic split between QA screenshots and the main-session taste loop.
+description: Use when writing a design spec or judging a built page. Behavioral grounding for the Composer (who the user is, which psychology principles apply, ethics hard-lines) and a 10-question usability diagnostic split between QA screenshots and the main-session taste loop.
 ---
 
 # UX Research
@@ -10,7 +10,7 @@ whether it **works for a human**. Every flow, hierarchy, and layout decision mus
 a reason about the user: "looks clean" is not a reason. A beautiful page that confuses
 users is a failed page.
 
-## 1. Ground the design first (Designer, before any visual decision)
+## 1. Ground the design first (Composer, before any visual decision)
 
 Answer in 2-3 sentences at the top of `.craft/design.md`, derived from the request +
 `.craft/copy.md` (its Audience & core promise section) + `CLAUDE.md`: NOT from an
@@ -35,7 +35,7 @@ Pick ONLY what fits this surface type; list them in `.craft/design.md` under
 | Feature / product tour section | Recognition over recall (show, don't describe), consistency of pattern per feature card, calm rhythm: persuasion lives in hero and CTA, not everywhere |
 | FAQ / objection section | Serial-position effect (strongest answers first and last), plain-language questions users actually ask, one honest answer per objection |
 
-## 3. Usability heuristics: design-time checklist (Designer)
+## 3. Usability heuristics: design-time checklist (Composer)
 
 Condensed from Nielsen's 10 + Krug; check while writing the section breakdown:
 
@@ -50,7 +50,7 @@ Condensed from Nielsen's 10 + Krug; check while writing the section breakdown:
 9. **Errors that help**: form errors in plain language, next to the field, with the fix.
 10. **No manual needed**: if a section needs explanation to be understood, redesign it.
 
-## 3b. Interaction states and microcopy (Designer specifies, QA and main session check)
+## 3b. Interaction states and microcopy (Composer specifies, QA and main session check)
 
 Write these into `design.md` for every interactive element; built pages most often
 fall short of the design here:
@@ -104,7 +104,7 @@ regardless of how good it looks.
 
 ## Done check
 
-**Designer:**
+**Composer:**
 - [ ] design.md opens with who + JTBD + context (from copy.md/request, not invented)
 - [ ] **Principles used**: 3-5 principles, each mapped to a concrete section
 - [ ] §3 checklist passed on the section breakdown
