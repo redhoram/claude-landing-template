@@ -60,4 +60,4 @@ each other: decide both together, in `.craft/copy.md`.
 - [ ] Alt text written for every meaningful image; `alt=""` marked for decorative ones
 
 > Credits: adapted from the `seo-content-strategist` skill in
-> [antigravity-landing-template](https://github.com/redhoram/antigravity-landing-template) (same author, MIT).
+> the author's earlier, unpublished Antigravity landing template.
