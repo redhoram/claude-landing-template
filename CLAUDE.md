@@ -34,9 +34,17 @@ This is a **landing page / simple app** project: heavy on design & content, ligh
 
 ## Stack (default: adjust if different)
 
-- Vite + React + TypeScript
-- Tailwind CSS v4 (`@tailwindcss/vite`; brand tokens via the `@theme` block in `src/index.css`: NOT `tailwind.config.js`)
-- Icons: `lucide-react` (NO emoji as icons)
+Two stacks share the same tools: TypeScript, Tailwind CSS v4 (`@tailwindcss/vite`; brand tokens via the `@theme` block in the global stylesheet, NOT `tailwind.config.js`), React for anything interactive, and `lucide-react` for icons (NO emoji as icons). Both build to `dist/`.
+
+| Stack | Use for | Global stylesheet | JS bundles | Browser env prefix | Dev port |
+|---|---|---|---|---|---|
+| **Astro** + React islands | Pages meant to be found through search, and content pages in general: the HTML ships with its content, and JavaScript loads only for the interactive parts | `src/styles/global.css` | `dist/_astro/` | `PUBLIC_` | 4321 |
+| **Vite** + React | App-like pages that are interactive throughout and not meant to be found through search | `src/index.css` | `dist/assets/` | `VITE_` | 5173 |
+
+- **Chosen stack**: [auto]. Write `Astro` or `Vite` here to fix it for this project.
+- **Rule**, first match wins: (1) `package.json` exists: the installed stack (`astro` in its dependencies means Astro, otherwise Vite); (2) Chosen stack above is `Astro` or `Vite`; (3) the page is meant to be found through search: Astro; (4) otherwise Vite. `/craft` applies it once and writes the result as the `Stack:` line of `.craft/brief.md`.
+- Spec files name a file path, environment variable, or asset import only in the form the Stack table gives for that stack. When a spec and this table disagree on such a detail, this table wins and the developer records the deviation.
+- Astro needs a recent Node.js (the `engines` field of its `package.json` has the exact minimum). Vite runs on Node 18+.
 - No backend/DB. If you need a form, use an external service (e.g. Formspree).
 
 ## Workflow: VISUAL LOOP, not a batch pipeline
@@ -74,8 +82,8 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **Performance (measurable)**: LCP < 2.5s, INP < 200ms, CLS < 0.1. JS bundle < 250KB gzipped. Images WebP/AVIF, no raw PNG > 200KB, small favicon; `loading="lazy"` on below-fold images; reserve space to avoid layout shift.
 - **SEO**: exactly ONE `<h1>` per page; heading levels never skip (no h2 → h4); `<title>` + meta description (< 155 chars, reads like ad copy for the page); descriptive `alt` doubles as image SEO; JSON-LD structured data (Product/FAQPage/Article) when the content type fits.
 - **Conversion basics**: primary CTA visible above the fold at 375px AND 1280px; CTA labels are verb-first and specific ("Start free", not "Submit"/"Learn more").
-- **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (build/image tools → `devDependencies`); no junk files/scripts in the repo; semantic HTML.
-- **No-JS resilience**: scroll-reveal hidden state must degrade gracefully; apply it via a JS-added class on `<body>`, not hardcoded as `opacity-0` in JSX initial state. Always respect `prefers-reduced-motion: reduce`.
+- **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (on Vite, build/image tools → `devDependencies`; on Astro every package runs at build time, so the placement `astro add` chose stands); no junk files/scripts in the repo; semantic HTML.
+- **No-JS resilience**: scroll-reveal hidden state must degrade gracefully; apply it via a JS-added class on `<body>`, not hardcoded as `opacity-0` in the initial markup. A page meant to be found through search ships its headings, copy, and structured data in the served HTML, before any JavaScript runs. Always respect `prefers-reduced-motion: reduce`.
 - **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims. In spec files the marker is `[ILLUSTRATIVE]`. On the built page it becomes a small visible label next to the content (e.g. "Contoh" / "Example"), never the raw bracket tag. A heading never promises a feature that no content source backs; reword it as an intent ("Rencana kami: ...") or drop it.
 
 ## Sources of truth (who wins when files disagree)
@@ -86,6 +94,7 @@ Each `/craft` file owns one thing. When two disagree, the owner wins and the oth
 |---|---|
 | Is this claim, number, testimonial, or logo real? | Content sources below; if they are still placeholders, `.craft/brief.md`; otherwise it is `[ILLUSTRATIVE]` |
 | Product, goal, audience | `.craft/brief.md`, then the first paragraph of this file |
+| Stack, and its paths and environment variable names | The rule and table in the Stack section above, recorded as the `Stack:` line of `.craft/brief.md` |
 | Palette, type, rhythm, motion, voice and tone | `.craft/brand.md` (or the Brand section once filled) |
 | Heading structure, title, meta description, JSON-LD | `.craft/seo.md` for structure; wording follows the brand voice |
 | Exact page words | `.craft/copy.md` |
@@ -118,7 +127,7 @@ Logos/images: ensure REAL transparency (many "transparent" files actually have a
 - Code & comments: English
 - Communication language with user: [e.g. Indonesian / English]
 - Never commit `.env*` or any API key to Git
-- Dev server: `npm run dev` (Vite, default port 5173). [Adjust if this project uses a different launcher/port]
+- Dev server: `npm run dev` (port per the Stack table). Production preview: `npm run preview -- --port 4173` on both stacks. [Adjust if this project uses a different launcher/port]
 - As the project grows: rules relevant to only ONE folder go in a `CLAUDE.md` inside that folder, loaded lazily only when Claude works there, keeping this root file lean.
 - [Project-specific rule: e.g. custom scripts, deploy target, etc.]
 - Git: [author email for commits]. Stage files by explicit path, never `git add -A`. Never push without the user's explicit confirmation.

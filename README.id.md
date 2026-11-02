@@ -66,14 +66,14 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 ### Prasyarat
 
 - [Claude Code](https://claude.com/claude-code) ter-install: `/craft` dan `/polish` itu **slash command Claude Code**, diketik di dalam sesi Claude Code di folder project (bukan script npm).
-- Node.js 18+ dan npm (stack default berbasis Vite).
+- Node.js dan npm. Template membawa dua stack: **Astro** untuk halaman yang mau ditemukan lewat pencarian (isi sudah ada di HTML sebelum JavaScript jalan; butuh Node.js versi baru, lihat field `engines` milik Astro) dan **Vite** untuk halaman interaktif ala aplikasi (Node.js 18+). Keduanya pakai React, TypeScript, Tailwind v4, dan lucide-react.
 - Browser berbasis Chromium (Chrome, Edge, atau Chromium) supaya QA bisa ngambil screenshot headless. Kalau nggak ada, QA balik ke checklist untuk main session.
 
 ### Bikin project baru
 
 1. Copy `_landing-template` → rename folder
 2. Isi `CLAUDE.md`: terutama section **Brand & Design System** (ini yang bikin output konsisten & tajam; kosongin aja dan curator yang mengisinya) dan **Content sources** (apa yang boleh diklaim copywriter)
-3. Scaffold stack (default Vite + React + TS + Tailwind v4 + lucide-react), atau skip aja: `/craft` auto-scaffold kalau `package.json` belum ada
+3. Biarkan **Chosen stack** di `CLAUDE.md` tetap `auto` (Astro kalau brief bilang halaman mau ditemukan lewat pencarian, Vite kalau tidak) atau kunci ke salah satu. `/craft` men-scaffold-nya kalau `package.json` belum ada
 4. `git init`
 5. Buka Claude Code di folder itu → jalankan `/craft [halaman/section]`
 
