@@ -27,6 +27,7 @@ Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 - **Honest copy by source**: the copywriter takes claims, numbers, testimonials, and logos only from the `Content sources` section of `CLAUDE.md`; everything else is marked illustrative. Indonesian AI clichés are filtered too, and the bundled `humanizer` skill runs on the copy.
 - **Audit trail and commit**: each `/craft` run archives the previous `.craft/` files instead of deleting them, and on PASS offers a commit of the built files, staged by explicit path. It never pushes without your confirmation.
 - **Model override**: change any agent's model per project in `CLAUDE.md`, without editing the agent file.
+- **Two stacks, picked per page**: Astro for pages meant to be found through search (the content is in the HTML before any JavaScript runs, and React loads only for the interactive parts) and Vite + React for app-like pages. `/craft` picks one from the brief and records it, or you fix it in `CLAUDE.md`.
 
 ### Difference from `_pipeline-template`
 

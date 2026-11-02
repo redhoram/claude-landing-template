@@ -26,6 +26,7 @@ Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 - **QA ngeliat, bukan cuma grep**: setelah cek statis, QA menyajikan build produksi, ngambil screenshot headless di 375, 768, dan 1280px (bagian atas lipatan dan halaman penuh), lalu menilainya sendiri. Temuan visual severity 3 ke atas berarti NEEDS WORK. Hover, animasi, dan console tetap dicek langsung di main session.
 - **Copy jujur sesuai sumber**: copywriter cuma ngambil klaim, angka, testimoni, dan logo dari section `Content sources` di `CLAUDE.md`; selebihnya ditandai ilustratif. Klise AI bahasa Indonesia juga disaring, dan skill `humanizer` bawaan dijalankan ke copy.
 - **Jejak audit dan commit**: tiap `/craft` mindahin file `.craft/` lama ke arsip, bukan ngehapus, dan saat PASS nawarin commit file yang dibangun, di-stage per path. Nggak pernah push tanpa konfirmasimu.
+- **Dua stack, dipilih per halaman**: Astro untuk halaman yang mau ditemukan lewat pencarian (isinya sudah ada di HTML sebelum JavaScript jalan, React hanya dimuat untuk bagian interaktif) dan Vite + React untuk halaman ala aplikasi. `/craft` memilih dari brief dan mencatatnya, atau Anda kunci di `CLAUDE.md`.
 - **Model override**: model tiap agent bisa diganti per project di `CLAUDE.md`, tanpa ngedit file agent.
 
 ### Beda dari `_pipeline-template`
