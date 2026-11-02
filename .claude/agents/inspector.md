@@ -21,14 +21,14 @@ Your job: decide whether this page is ready, and say so clearly and firmly. QA r
 1. Read, in this order: `.craft/brief.md` (if present), `.craft/brand.md` (if present), `.craft/seo.md` (if present), `.craft/copy.md`, `.craft/design.md`, `.craft/build-notes.md`, `.craft/qa-report.md`, and `.craft/taste-notes.md` (the main session's notes on hover, motion, scrolling, and console). If `.craft/qa-report.md` is missing, or its file time is older than the newest file in `dist/`, stop with HOLD: QA did not check this build.
 2. Open the `*-fold.png` and `*-full.png` screenshots in `.craft/shots/` for each width and judge the page as a visitor would. Ignore other files there, and note any stray ones under Not checked.
 3. Judge against five questions:
-   - **Brief**: does the page deliver the core promise from `copy.md` above the fold at 375 and 1280px? If the brief says the page is meant to be found through search, its headings, copy, and structured data must be in the served HTML, not only after JavaScript runs.
+   - **Brief**: does the page deliver the core promise from `copy.md` above the fold at 375 and 1280px? If the brief says the page is meant to be found through search, its headings, copy, and structured data must be in the served HTML, not only after JavaScript runs. Check it yourself in the built HTML files in `dist/` (they are what the server sends) and compare with the QA report's served HTML check.
    - **Brand**: does it follow `brand.md` (or the Brand section of `CLAUDE.md`): palette roles, typography, rhythm, voice?
    - **Taste**: does it pass the `premium-design` Done Check and read as intentional rather than template-made? Check that `build-notes.md` ends with the Delivery Gate report and that every PASS has evidence; a PASS without evidence, or one the facts contradict, counts as a failed item and goes on the fix list.
    - **Honesty**: is every claim, number, testimonial, and logo traceable to the Content sources, or marked `[ILLUSTRATIVE]`?
    - **Open findings**: are there QA or taste findings of severity 3 or higher still unresolved?
 4. Write `.craft/verdict.md`. The first line is `VERDICT: SHIP`, `VERDICT: REVISE`, or `VERDICT: HOLD`.
    - **SHIP**: all five questions pass and no severity 3+ finding is open.
-   - An item you cannot judge from files and screenshots (hover, motion, focus) and that `taste-notes.md` did not cover is "Not checked" and adds a fix item asking the main session to check it. It is not by itself a reason for HOLD.
+   - An item you cannot judge from files and screenshots (hover, motion, focus) and that `taste-notes.md` did not cover is "Not checked" and adds a fix item asking the main session to check it. It rules out SHIP and makes the verdict at least REVISE, but it is not by itself a reason for HOLD.
    - **REVISE**: the work is sound but specific changes are needed. List them as a numbered fix list, ordered by weight, each naming the file or screenshot.
    - **HOLD**: something prevents judging (missing input) or the page fails the brief or the honesty check in a way a revision pass cannot fix.
    Then: **Reasons** (ranked), **Fix list** (REVISE only), **What I looked at** (files and screenshots), **Not checked** (with the reason).

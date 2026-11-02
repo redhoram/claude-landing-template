@@ -22,7 +22,7 @@ real visits: median-fast is not fast.
 - Modern formats: WebP/AVIF with `srcset` + `sizes` so mobile never downloads desktop pixels.
 - Fonts never block the headline: `font-display: swap` on every `@font-face`; preload
   the display font's woff2 only (`<link rel="preload" as="font" type="font/woff2" crossorigin>`).
-- No render-blocking scripts in `<head>`: Vite's defaults are correct; don't add
+- No render-blocking scripts in `<head>`: the Astro and Vite defaults are correct; don't add
   synchronous third-party tags above the content.
 
 ## 2. CLS < 0.1: nothing jumps
@@ -56,15 +56,19 @@ real visits: median-fast is not fast.
   Date formatting, class joining, simple carousels rarely deserve a dependency.
 - Icons: `lucide-react` per-icon imports are tree-shaken; never import the whole set;
   never inline verbose SVG blobs when an icon exists.
-- Below-the-fold heavy components (video players, carousels, maps): `React.lazy` +
-  dynamic `import()` so the first paint never pays for them.
+- Below-the-fold heavy components (video players, carousels, maps): on Astro, an island
+  with `client:visible`; on Vite, `React.lazy` + dynamic `import()`. Either way the first
+  paint never pays for them.
+- On Astro, a section with no state or event handlers stays an `.astro` component and
+  ships zero JavaScript; making it a hydrated React island needs a reason.
 - Images/fonts are static assets, never imported into the JS bundle as base64.
-- After build: check `dist/assets/*.js` gzipped total against 250KB (the QA will).
+- After build: check the gzipped total of the `.js` files in the bundle folder
+  (`dist/_astro/` on Astro, `dist/assets/` on Vite) against 250KB (the QA will).
 
 ## 5. Stack idiom (this template's defaults)
 
-- Tailwind v4: brand tokens live in the `@theme` block in `src/index.css`;
-  NOT `tailwind.config.js`. Every color traces to a token (premium-design rule).
+- Tailwind v4: brand tokens live in the `@theme` block of the global stylesheet
+  (`src/styles/global.css` on Astro, `src/index.css` on Vite); NOT `tailwind.config.js`. Every color traces to a token (premium-design rule).
 - `loading="lazy"` + `decoding="async"` on every below-the-fold image; NEVER on the LCP/hero image.
 - Scroll-reveal: hidden state applied via a JS-added class on `<body>` (no-JS resilience),
   `IntersectionObserver` with `unobserve` after trigger, respect `prefers-reduced-motion`.
@@ -82,4 +86,4 @@ real visits: median-fast is not fast.
 
 > Credits: adapted for this template from `core-web-vitals` and `performance` in
 > [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills) (MIT),
-> trimmed to the write-time patterns a static Vite + React landing page actually uses.
+> trimmed to the write-time patterns a static Astro or Vite + React landing page actually uses.

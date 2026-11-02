@@ -66,14 +66,14 @@ Each agent reads only the skills that belong to its stage: documented here so th
 ### Prerequisites
 
 - [Claude Code](https://claude.com/claude-code) installed: `/craft` and `/polish` are **Claude Code slash commands**, typed inside a Claude Code session in the project folder (they're not npm scripts).
-- Node.js 18+ and npm (the default stack is Vite-based).
+- Node.js and npm. Two stacks ship with the template: **Astro** for pages meant to be found through search (content is in the HTML before any JavaScript runs; needs a recent Node.js, see Astro's `engines` field) and **Vite** for app-like interactive pages (Node.js 18+). Both use React, TypeScript, Tailwind v4, and lucide-react.
 - A Chromium-based browser (Chrome, Edge, or Chromium) so the QA can take headless screenshots. Without one, the QA falls back to a checklist for the main session.
 
 ### Start a new project
 
 1. Copy `_landing-template` → rename the folder
 2. Fill in `CLAUDE.md`: especially the **Brand & Design System** section (this is what keeps output consistent & sharp; leave it empty and the curator sets it for you) and **Content sources** (what the copywriter may claim)
-3. Scaffold the stack (default Vite + React + TS + Tailwind v4 + lucide-react), or skip this: `/craft` auto-scaffolds when `package.json` doesn't exist yet
+3. Leave **Chosen stack** in `CLAUDE.md` on `auto` (Astro when the brief says the page is meant to be found through search, Vite otherwise) or fix it to one. `/craft` scaffolds it when `package.json` doesn't exist yet
 4. `git init`
 5. Open Claude Code in the folder → run `/craft [page/section]`
 
