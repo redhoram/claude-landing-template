@@ -31,8 +31,18 @@ real visits: median-fast is not fast.
   `aspect-ratio`: no exceptions, including logos and avatars.
 - Reserve space for anything that loads late (embeds, maps): a container with
   `min-height` before the content arrives.
-- Web font shift: pair `font-display: swap` with a metric-compatible fallback
-  (`size-adjust` / system stack close in metrics) so swap doesn't reflow the page.
+- Web font shift: pair `font-display: swap` with a fallback stack close in metrics
+  (and `size-adjust` or the `*-override` descriptors when you know the web font's
+  numbers) so swap doesn't reflow the page. The declaration is the method; the measured
+  CLS below is the proof.
+- **Measure it, don't assume it.** Over the DevTools protocol, register
+  `new PerformanceObserver(...).observe({ type: 'layout-shift', buffered: true })`
+  with `Page.addScriptToEvaluateOnNewDocument` before navigating, load the page at
+  375 and 1280, scroll to the bottom, wait a few seconds, and sum `value` of the
+  entries whose `hadRecentInput` is false. Under 0.1 passes. Report the number and the
+  largest single shift. A page that scores 0 proves nothing if the observer never ran:
+  once per project, insert a block above the fold and confirm the observer reports a
+  non-zero value.
 - Animations move things with `transform`/`opacity` ONLY: animating height, margin,
   or top is a layout shift you wrote on purpose.
 - Never insert content ABOVE the user's current viewport position (banners that push
@@ -79,7 +89,7 @@ real visits: median-fast is not fast.
 
 - [ ] Hero/LCP image: preloaded, `fetchpriority="high"`, WebP/AVIF, srcset, NOT lazy
 - [ ] Every media element has dimensions or aspect-ratio; zero layout jump on load
-- [ ] Fonts: swap + metric fallback + woff2 preload for the display font
+- [ ] Fonts: swap + close-metric fallback + woff2 preload for the display font, and measured CLS < 0.1 at 375 and 1280
 - [ ] Interactions: instant visual feedback; heavy work deferred; no >50ms tasks
 - [ ] Each new dependency justified; heavy below-fold components lazy-loaded
 - [ ] `dist` JS gzipped < 250KB; below-fold images lazy; motion transform/opacity only
