@@ -84,6 +84,20 @@ Yang bikin output beda dari generator instan: **berani di desain, disiplin di ko
 
 Dan **gagal keras, bukan diam-diam**: spec brand, rencana SEO, copy, dan design bawa flag status READY/BLOCKED, inspector memberi vonis tegas SHIP, REVISE, atau HOLD, developer bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak dia lakukan: dia menilai screenshot-nya sendiri, nulis "not checked" kalau nggak ada browser, dan nyerahin hover, animasi, dan console ke main session dengan mata di live preview.
 
+### Yang tidak diputuskan AI
+
+- Memublikasikan halaman: push, deploy, dan mengarahkan domain ke sana.
+- Klaim apa pun yang ditampilkan sebagai nyata. Sumbernya hanya `Content sources`, testimoni dan logo hanya dengan izin pemiliknya; selebihnya ditandai ilustratif.
+- Mengganti brand yang sudah dipakai klien. Curator mengusulkan brand hanya kalau belum ada.
+- Teks hukum dan penawaran (kebijakan privasi, pemberitahuan cookie, syarat, harga). Agent boleh membuat draf ilustratif, kamu yang memberi atau menyetujui kata-kata aslinya.
+- Memilih layanan yang mengumpulkan data pengunjung (layanan form, analytics, tracking pixel).
+
+### Batasan
+
+- QA dan inspector menangkap banyak masalah, tapi tidak semuanya.
+- Taste loop dan verdict tidak menggantikan pengunjung sungguhan, dan angka performa dari build lokal bukan data lapangan.
+- Kualitas hasil bergantung pada model dan konteks yang kamu berikan.
+
 ### Kredit
 
 **Author**

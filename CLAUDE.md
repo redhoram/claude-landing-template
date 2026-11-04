@@ -110,6 +110,20 @@ Spec files (`brief.md` through `verdict.md`) are written in English; page copy i
 - Numbers and results: [e.g. `docs/metrics.md`, or "none yet: mark illustrative"]
 - Testimonials and logos: [e.g. `docs/testimonials.md` with written permission, or "none"]
 
+## Where AI does not decide
+
+These stay with the user, whatever any agent writes:
+
+- Publishing the page: pushing, deploying, and pointing a domain at it. The user does it.
+- Any claim shown as real: numbers, results, testimonials, client logos, awards. It ships only from Content sources, and testimonials and logos only with the owner's permission; everything else stays `[ILLUSTRATIVE]`.
+- Replacing a brand the client already uses (name, logo, palette, voice). The curator proposes a brand only when none exists.
+- Legal and offer text: privacy policy, cookie notice, terms, prices, and offer conditions. Agents may draft them as `[ILLUSTRATIVE]`; the user supplies or approves the real wording.
+- Choosing a third-party service that collects visitor data (form service, analytics, tracking pixel). Agents may wire a placeholder; the user picks the service and holds the account.
+
+Honest limits: the qa and the inspector lower the error rate but do not remove
+it. The taste loop and the verdict do not replace real visitors, and
+performance numbers from a local build are not field data.
+
 ## Model override
 
 [Optional. Defaults are in each agent file: copywriter, composer, developer, curator, inspector on `opus`; qa, optimizer on `sonnet`. List an agent here to run it on a different model in this project without editing the agent file. Leave empty to use the defaults.]
