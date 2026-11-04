@@ -84,6 +84,20 @@ What sets the output apart from instant generators: **bold in design, discipline
 
 And **fail loud, not silent**: the brand, SEO plan, copy, and design specs carry READY/BLOCKED status flags, the inspector returns a firm SHIP, REVISE, or HOLD, the developer declares BLOCKED instead of looping forever on a broken build, and QA never claims a visual check it didn't do: it judges its own screenshots, says "not checked" when no browser is available, and leaves hover, motion, and console to the main session with eyes on the live preview.
 
+### Where AI does not decide
+
+- Publishing the page: pushing, deploying, and pointing a domain at it.
+- Any claim shown as real. It comes only from `Content sources`, testimonials and logos only with the owner's permission; everything else is marked illustrative.
+- Replacing a brand the client already uses. The curator proposes a brand only when none exists.
+- Legal and offer text (privacy policy, cookie notice, terms, prices). Agents may draft it as illustrative; you supply or approve the real wording.
+- Choosing a service that collects visitor data (form service, analytics, tracking pixel).
+
+### Limits
+
+- The QA and the inspector catch many problems but not all of them.
+- The taste loop and the verdict do not replace real visitors, and performance numbers from a local build are not field data.
+- Output quality depends on the model and on the context you give it.
+
 ### Credit
 
 **Author**
