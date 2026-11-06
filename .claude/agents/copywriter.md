@@ -27,7 +27,7 @@ Your job: turn the request into copy so concrete that the Composer never has to 
 4. Write the copy to `.craft/copy.md`. First line is a status flag: `STATUS: READY`, or `STATUS: BLOCKED on [question]` ONLY if something genuinely prevents writing (rare; missing brand info is an assumption, not a blocker). Then:
    - **Audience & core promise**: 2-3 sentences.
    - **Page flow**: ordered section list, one line each: section name + its job in the persuasion arc.
-   - **Copy per section**: the exact text: headline, subtext, CTA label, supporting bullets/microcopy. Write the real words, not descriptions of words ("a punchy headline about speed" is a failure; write the headline).
+   - **Copy per section**: the exact text: headline, subtext, CTA label, supporting bullets/microcopy. Write the real words, not descriptions of words ("a punchy headline about speed" is a failure; write the headline). For a form, also write the short note it shows before anyone types while no service is connected, unless the request or `.craft/brief.md` names a connected service.
    - **CTA rules applied**: one primary CTA label, used everywhere the arc peaks; the form's submit button may carry its own label because it sits on the form itself. The primary CTA is verb-first and outcome-flavored ("Start free", "Get the checklist", never "Submit"/"Learn more" as primary), repeated where the arc peaks.
    - **Tone & voice notes**: 2-3 bullets the Composer/Developer must preserve.
    - **SEO notes** (per `seo-content-strategist`): primary keyword + where it's placed, `<title>` (≤60 chars), meta description (<155 chars, ad-copy style), JSON-LD type (or "none warranted"), alt text for named images.
