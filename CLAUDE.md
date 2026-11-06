@@ -84,7 +84,7 @@ Design is iterative & visual. The main mode is interactive work in the main sess
 - **Conversion basics**: primary CTA visible above the fold at 375px AND 1280px; CTA labels are verb-first and specific ("Start free", not "Submit"/"Learn more").
 - **Clean code**: DRY components (use `map`, don't copy-paste); dependencies in the right place (on Vite, build/image tools → `devDependencies`; on Astro every package runs at build time, so the placement `astro add` chose stands); no junk files/scripts in the repo; semantic HTML.
 - **No-JS resilience**: scroll-reveal hidden state must degrade gracefully; apply it via a JS-added class on `<body>`, not hardcoded as `opacity-0` in the initial markup. A page meant to be found through search ships its headings, copy, and structured data in the served HTML, before any JavaScript runs. Always respect `prefers-reduced-motion: reduce`.
-- **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims. In spec files the marker is `[ILLUSTRATIVE]`. On the built page it becomes a small visible label next to the content (e.g. "Contoh" / "Example"), never the raw bracket tag. A heading never promises a feature that no content source backs; reword it as an intent ("Rencana kami: ...") or drop it.
+- **Content honesty**: mark dummy data (mockup names/numbers) clearly as illustrative. Don't fabricate claims. In spec files the marker is `[ILLUSTRATIVE]`. On the built page it becomes a small visible label next to the content (e.g. "Contoh" / "Example"), never the raw bracket tag. JSON-LD never carries `[ILLUSTRATIVE]` content, because a label cannot show there. A heading never promises a feature that no content source backs; reword it as an intent ("Rencana kami: ...") or drop it.
 
 ## Sources of truth (who wins when files disagree)
 
@@ -93,6 +93,7 @@ Each `/craft` file owns one thing. When two disagree, the owner wins and the oth
 | Question | Owner |
 |---|---|
 | Is this claim, number, testimonial, or logo real? | Content sources below; if they are still placeholders, `.craft/brief.md`; otherwise it is `[ILLUSTRATIVE]` |
+| Is this offer term (price, condition, promise) final? | The request, the `Offer terms:` line of `.craft/brief.md`, or the Content sources; otherwise it is `[ILLUSTRATIVE]` |
 | Product, goal, audience | `.craft/brief.md`, then the first paragraph of this file |
 | Stack, and its paths and environment variable names | The rule and table in the Stack section above, recorded as the `Stack:` line of `.craft/brief.md` |
 | Palette, type, rhythm, motion, voice and tone | `.craft/brand.md` (or the Brand section once filled) |
