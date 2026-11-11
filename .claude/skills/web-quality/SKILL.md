@@ -43,6 +43,10 @@ real visits: median-fast is not fast.
   largest single shift. A page that scores 0 proves nothing if the observer never ran:
   once per project, insert a block above the fold and confirm the observer reports a
   non-zero value.
+- **Measure with the fonts held back too.** A local preview serves fonts before first
+  paint, so the run above rarely sees the swap. Run it again per width with
+  `Fetch.enable` on a pattern for font files, hold each paused request about 3 seconds,
+  then `Fetch.continueRequest`, and report both numbers.
 - Animations move things with `transform`/`opacity` ONLY: animating height, margin,
   or top is a layout shift you wrote on purpose.
 - Never insert content ABOVE the user's current viewport position (banners that push
@@ -82,6 +86,10 @@ real visits: median-fast is not fast.
 - `loading="lazy"` + `decoding="async"` on every below-the-fold image; NEVER on the LCP/hero image.
 - Scroll-reveal: hidden state applied via a JS-added class on `<body>` (no-JS resilience),
   `IntersectionObserver` with `unobserve` after trigger, respect `prefers-reduced-motion`.
+- Client-rendered pages (Vite): the browser handles a `#fragment` before React renders,
+  so a direct load or reload of `/#form` stays at the top. After the first render,
+  scroll to the element `location.hash` names (`behavior: 'instant'`). Astro ships the
+  section in the HTML and needs nothing.
 - Static hosting assumption: no server tricks available, so everything above must be
   achieved in markup and build output.
 
@@ -89,7 +97,8 @@ real visits: median-fast is not fast.
 
 - [ ] Hero/LCP image: preloaded, `fetchpriority="high"`, WebP/AVIF, srcset, NOT lazy
 - [ ] Every media element has dimensions or aspect-ratio; zero layout jump on load
-- [ ] Fonts: swap + close-metric fallback + woff2 preload for the display font, and measured CLS < 0.1 at 375 and 1280
+- [ ] Fonts: swap + close-metric fallback + woff2 preload for the display font, and measured CLS < 0.1 at 375 and 1280, with fonts as loaded and held back
+- [ ] Vite: a direct load of an in-page `#hash` lands on its section
 - [ ] Interactions: instant visual feedback; heavy work deferred; no >50ms tasks
 - [ ] Each new dependency justified; heavy below-fold components lazy-loaded
 - [ ] `dist` JS gzipped < 250KB; below-fold images lazy; motion transform/opacity only

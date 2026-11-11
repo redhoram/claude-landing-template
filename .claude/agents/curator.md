@@ -26,7 +26,7 @@ Your job: turn what is known about the product and its taste references into a b
 4. Write `.craft/brand.md`. First line is a status flag: `STATUS: READY`, or `STATUS: BLOCKED on [question]` only if something genuinely prevents a decision (rare; missing information is an assumption). Then:
    - **Direction**: the concept in two sentences, the visual reference used as the benchmark (or "none: proposed, awaiting confirmation"), antislop's Design Read line, and the three dials, e.g. `Dial: ENERGY 3 / RHYTHM 3 / MOTION 2`.
    - **Palette**: each token with hex, role, and where it is used; the forbidden text and background pairings; the contrast ratios you computed; the `@theme` block.
-   - **Typography**: display and body fonts, why they fit, the heading scale, line length and line height.
+   - **Typography**: display and body fonts, why they fit, the fallback stack for each (close-metric system fonts, with `size-adjust` or override values when known), the heading scale, line length and line height.
    - **Section rhythm**: the order of section tones across a page, so the page has a pulse rather than one flat color.
    - **Shape**: border radius, shadow, borders, and texture, so cards and buttons look the same on every page.
    - **Motion**: 150-300ms, `transform` and `opacity` only, `prefers-reduced-motion` respected, and what moves on purpose.
