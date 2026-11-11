@@ -19,11 +19,13 @@ Template framework untuk **landing page & aplikasi sederhana**: berat di desain 
 Desain itu iteratif & visual (lihat → ubah → lihat lagi). Maksain pipeline batch lima-tahap di sini malah mematikan loop itu. Jadi framework ini punya **dua mode**:
 
 - **0→1 lewat `/craft [halaman/section]`**: spin-up draft kuat dari nol lewat subagent (curator dan optimizer kalau perlu → copywriter → composer → developer → qa), lalu loop taste dan vonis inspector. Copy dulu: copywriter menetapkan hierarki pesan + headline/CTA persis, baru composer menata layoutnya. Buat dapetin fondasi cepat.
-- **1→bagus, interaktif atau `/polish [target]`**: poles di main session pakai live preview. Di sinilah desain jadi tajam.
+- **1→bagus, interaktif atau `/polish [target]`**: Creative Manager memoles pakai live preview. Di sinilah desain jadi tajam.
 
 Pipeline batch cocok buat CRUD; poles visual butuh mata di layar.
 
-- **QA ngeliat, bukan cuma grep**: setelah cek statis, QA menyajikan build produksi, ngambil screenshot headless di 375, 768, dan 1280px (bagian atas lipatan dan halaman penuh), lalu menilainya sendiri. Temuan visual severity 3 ke atas berarti NEEDS WORK. Hover, animasi, dan console tetap dicek langsung di main session.
+Sesi utama Claude Code berperan sebagai Creative Manager dan memegang gerbang. Ia tidak punya file agent karena hanya sesi utama yang bisa memanggil subagent.
+
+- **QA ngeliat, bukan cuma grep**: setelah cek statis, QA menyajikan build produksi, ngambil screenshot headless di 375, 768, dan 1280px (bagian atas lipatan dan halaman penuh), lalu menilainya sendiri. Temuan visual severity 3 ke atas berarti NEEDS WORK. Hover, animasi, dan console tetap dicek langsung oleh Creative Manager.
 - **Copy jujur sesuai sumber**: copywriter cuma ngambil klaim, angka, testimoni, dan logo dari section `Content sources` di `CLAUDE.md`; selebihnya ditandai ilustratif. Klise AI bahasa Indonesia juga disaring, dan skill `humanizer` bawaan dijalankan ke copy.
 - **Jejak audit dan commit**: tiap `/craft` mindahin file `.craft/` lama ke arsip, bukan ngehapus, dan saat PASS nawarin commit file yang dibangun, di-stage per path. Nggak pernah push tanpa konfirmasimu.
 - **Dua stack, dipilih per halaman**: Astro untuk halaman yang mau ditemukan lewat pencarian (isinya sudah ada di HTML sebelum JavaScript jalan, React hanya dimuat untuk bagian interaktif) dan Vite + React untuk halaman ala aplikasi. `/craft` memilih dari brief dan mencatatnya, atau Anda kunci di `CLAUDE.md`.
@@ -68,7 +70,7 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 
 - [Claude Code](https://claude.com/claude-code) ter-install: `/craft` dan `/polish` itu **slash command Claude Code**, diketik di dalam sesi Claude Code di folder project (bukan script npm).
 - Node.js dan npm. Template membawa dua stack: **Astro** untuk halaman yang mau ditemukan lewat pencarian (isi sudah ada di HTML sebelum JavaScript jalan; butuh Node.js versi baru, lihat field `engines` milik Astro) dan **Vite** untuk halaman interaktif ala aplikasi (Node.js 18+). Keduanya pakai React, TypeScript, Tailwind v4, dan lucide-react.
-- Browser berbasis Chromium (Chrome, Edge, atau Chromium) supaya QA bisa ngambil screenshot headless. Kalau nggak ada, QA balik ke checklist untuk main session.
+- Browser berbasis Chromium (Chrome, Edge, atau Chromium) supaya QA bisa ngambil screenshot headless. Kalau nggak ada, QA balik ke checklist untuk Creative Manager.
 
 ### Bikin project baru
 
@@ -82,7 +84,7 @@ Tiap agent cuma baca skill milik tahapnya: didokumentasikan di sini biar pemetaa
 
 Yang bikin output beda dari generator instan: **berani di desain, disiplin di kode.** Detail di prinsip & anggaran kualitas dalam `CLAUDE.md`.
 
-Dan **gagal keras, bukan diam-diam**: spec brand, rencana SEO, copy, dan design bawa flag status READY/BLOCKED, inspector memberi vonis tegas SHIP, REVISE, atau HOLD, developer bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak dia lakukan: dia menilai screenshot-nya sendiri, nulis "not checked" kalau nggak ada browser, dan nyerahin hover, animasi, dan console ke main session dengan mata di live preview.
+Dan **gagal keras, bukan diam-diam**: spec brand, rencana SEO, copy, dan design bawa flag status READY/BLOCKED, inspector memberi vonis tegas SHIP, REVISE, atau HOLD, developer bilang BLOCKED daripada muter-muter di build yang rusak, dan QA nggak pernah klaim cek visual yang nggak dia lakukan: dia menilai screenshot-nya sendiri, nulis "not checked" kalau nggak ada browser, dan nyerahin hover, animasi, dan console ke Creative Manager dengan mata di live preview.
 
 ### Yang tidak diputuskan AI
 

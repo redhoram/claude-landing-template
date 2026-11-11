@@ -19,11 +19,13 @@ A template framework for **landing pages & simple apps**: heavy on design & cont
 Design is iterative & visual (see → change → see again). Forcing a five-stage batch pipeline here just kills that loop. So this framework has **two modes**:
 
 - **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch via subagents (curator and optimizer when needed → copywriter → composer → developer → qa), then a taste loop and the inspector's verdict. Copy first: the copywriter sets the message hierarchy and exact headlines/CTAs, then the composer lays them out. For getting a fast foundation.
-- **1→great, interactive or `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
+- **1→great, interactive or `/polish [target]`**: the Creative Manager polishes with live preview. This is where the design gets sharp.
 
 Batch pipelines suit CRUD; visual polish needs eyes on the screen.
 
-- **QA looks, not just greps**: after the static checks, the QA serves the production build, captures headless screenshots at 375, 768, and 1280px (above the fold and full page), and judges them itself. Severity 3+ visual findings mean NEEDS WORK. Hover, motion, and console are still checked live in the main session.
+The main Claude Code session acts as Creative Manager and holds the gates. It has no agent file, because only the main session can call subagents.
+
+- **QA looks, not just greps**: after the static checks, the QA serves the production build, captures headless screenshots at 375, 768, and 1280px (above the fold and full page), and judges them itself. Severity 3+ visual findings mean NEEDS WORK. Hover, motion, and console are still checked live by the Creative Manager.
 - **Honest copy by source**: the copywriter takes claims, numbers, testimonials, and logos only from the `Content sources` section of `CLAUDE.md`; everything else is marked illustrative. Indonesian AI clichés are filtered too, and the bundled `humanizer` skill runs on the copy.
 - **Audit trail and commit**: each `/craft` run archives the previous `.craft/` files instead of deleting them, and on PASS offers a commit of the built files, staged by explicit path. It never pushes without your confirmation.
 - **Model override**: change any agent's model per project in `CLAUDE.md`, without editing the agent file.
@@ -68,7 +70,7 @@ Each agent reads only the skills that belong to its stage: documented here so th
 
 - [Claude Code](https://claude.com/claude-code) installed: `/craft` and `/polish` are **Claude Code slash commands**, typed inside a Claude Code session in the project folder (they're not npm scripts).
 - Node.js and npm. Two stacks ship with the template: **Astro** for pages meant to be found through search (content is in the HTML before any JavaScript runs; needs a recent Node.js, see Astro's `engines` field) and **Vite** for app-like interactive pages (Node.js 18+). Both use React, TypeScript, Tailwind v4, and lucide-react.
-- A Chromium-based browser (Chrome, Edge, or Chromium) so the QA can take headless screenshots. Without one, the QA falls back to a checklist for the main session.
+- A Chromium-based browser (Chrome, Edge, or Chromium) so the QA can take headless screenshots. Without one, the QA falls back to a checklist for the Creative Manager.
 
 ### Start a new project
 
@@ -82,7 +84,7 @@ Each agent reads only the skills that belong to its stage: documented here so th
 
 What sets the output apart from instant generators: **bold in design, disciplined in code.** Details in the principles & quality budget inside `CLAUDE.md`.
 
-And **fail loud, not silent**: the brand, SEO plan, copy, and design specs carry READY/BLOCKED status flags, the inspector returns a firm SHIP, REVISE, or HOLD, the developer declares BLOCKED instead of looping forever on a broken build, and QA never claims a visual check it didn't do: it judges its own screenshots, says "not checked" when no browser is available, and leaves hover, motion, and console to the main session with eyes on the live preview.
+And **fail loud, not silent**: the brand, SEO plan, copy, and design specs carry READY/BLOCKED status flags, the inspector returns a firm SHIP, REVISE, or HOLD, the developer declares BLOCKED instead of looping forever on a broken build, and QA never claims a visual check it didn't do: it judges its own screenshots, says "not checked" when no browser is available, and leaves hover, motion, and console to the Creative Manager with eyes on the live preview.
 
 ### Where AI does not decide
 

@@ -5,7 +5,7 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 model: opus
 ---
 
-You are the Developer for this project. Read `CLAUDE.md` for the stack, conventions, quality budget, and the **Sources of truth** table. Page words come from `.craft/copy.md` verbatim (title, meta description, and JSON-LD from its SEO notes); layout and states come from `.craft/design.md`; tokens come from `.craft/brand.md` when it exists. Skip the "First thing in a fresh session" check in `CLAUDE.md`: it is for the main session only.
+You are the Developer for this project. Read `CLAUDE.md` for the stack, conventions, quality budget, and the **Sources of truth** table. Page words come from `.craft/copy.md` verbatim (title, meta description, and JSON-LD from its SEO notes); layout and states come from `.craft/design.md`; tokens come from `.craft/brand.md` when it exists. Skip the "First thing in a fresh session" check in `CLAUDE.md`: it is for the Creative Manager (the main session) only.
 
 Your job: turn `.craft/design.md` into clean, tidy code, exactly per the design, no more, no less.
 

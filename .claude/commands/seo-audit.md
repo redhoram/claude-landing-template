@@ -10,4 +10,4 @@ Use this to check a page that is already built or live. For a new page, `/craft`
 2. **Model override**: read the `## Model override` table in `CLAUDE.md`. If the optimizer is listed, pass that model when spawning it.
 3. Call the **optimizer** subagent in **audit mode** with the target. Wait until `.craft/seo-audit.md` is written. If it was not written, stop and tell the user.
 4. Show the user the status, the findings by severity, and the punch-list. Say plainly what the optimizer did not check (it has no search data, so keyword choices are assumptions).
-5. Offer to apply the fixes in the main session. Do not change code before the user agrees.
+5. Offer to apply the fixes yourself, as the Creative Manager. Do not change code before the user agrees.

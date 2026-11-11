@@ -10,7 +10,7 @@ Real risk: committing here could push unrelated project code to the
 template's public repo. The user copies this folder on purpose to start new
 projects; this check exists so they can do that with zero manual steps.
 
-**Main session only.** Subagents skip this whole section: never move or re-init `.git` from a subagent.
+**Main session (the Creative Manager) only.** Subagents skip this whole section: never move or re-init `.git` from a subagent.
 
 Before any other work, run `git remote -v` and look at the current folder name.
 
@@ -32,6 +32,17 @@ Before any other work, run `git remote -v` and look at the current folder name.
 
 This is a **landing page / simple app** project: heavy on design & content, light on logic. The framework and workflow here are optimized for that, NOT for complex CRUD apps (use `_pipeline-template`, the 6-agent `/ship` batch pipeline, for those).
 
+## Creative Manager (the main session)
+
+The main Claude Code session acts as Creative Manager and holds the gates. It is not a file in
+`.claude/agents/`, because a subagent cannot call another subagent: only the
+main session can run the chain. The Creative Manager:
+
+- talks to the user, writes the brief for `/craft` (at most four questions), and runs `/craft`, `/polish`, `/brand`, and `/seo-audit`;
+- runs the visual taste loop in `/craft` with eyes on the live preview (hover, motion, scrolling, console), checks what the QA and the inspector hand back to it, and writes `.craft/taste-notes.md`;
+- polishes the page itself in `/polish`; in `/craft` it never writes copy, a design spec, code, or a verdict when an agent owns it: it briefs the agent and checks the output file exists;
+- stops the chain when an output starts with `STATUS: BLOCKED`, offers to re-run or commit after the verdict, and never pushes without the user's confirmation.
+
 ## Stack (default: adjust if different)
 
 Two stacks share the same tools: TypeScript, Tailwind CSS v4 (`@tailwindcss/vite`; brand tokens via the `@theme` block in the global stylesheet, NOT `tailwind.config.js`), React for anything interactive, and `lucide-react` for icons (NO emoji as icons). Both build to `dist/`.
@@ -49,13 +60,13 @@ Two stacks share the same tools: TypeScript, Tailwind CSS v4 (`@tailwindcss/vite
 
 ## Workflow: VISUAL LOOP, not a batch pipeline
 
-Design is iterative & visual. The main mode is interactive work in the main session: **edit → see it in live preview → adjust**. Run the dev server and actually look at the result; don't work blind.
+Design is iterative & visual. The main mode is interactive work with the Creative Manager: **edit → see it in live preview → adjust**. Run the dev server and actually look at the result; don't work blind.
 
-- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch. A short brief first, then the curator (only when the brand is empty) and the optimizer (only for pages meant to be found through search), then copywriter → composer → developer → qa, a taste loop in the main session, and the inspector's verdict (SHIP / REVISE / HOLD). Copy first, then layout. For getting a fast foundation.
+- **0→1 with `/craft [page/section]`**: spin up a strong draft from scratch. A short brief first, then the curator (only when the brand is empty) and the optimizer (only for pages meant to be found through search), then copywriter → composer → developer → qa, a taste loop by the Creative Manager, and the inspector's verdict (SHIP / REVISE / HOLD). Copy first, then layout. For getting a fast foundation.
 - **`/brand`**: run the curator on its own to set or redo the brand system in `.craft/brand.md`. **`/seo-audit [target]`**: run the optimizer in audit mode on a page that already exists. Both report; neither changes code.
-- **1→great, interactive or `/polish [target]`**: polish in the main session with live preview. This is where the design gets sharp.
+- **1→great, interactive or `/polish [target]`**: the Creative Manager polishes with live preview. This is where the design gets sharp.
 - DON'T use `/craft` for small tweaks: that kills the iteration loop.
-- Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`, except `brand.md`, which belongs to the project. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the main session still drives the live preview for hover, motion, and console.
+- Each `/craft` run archives the previous `.craft/` files to `.craft/archive/<timestamp>/`, except `brand.md`, which belongs to the project. The QA renders the build headless and looks at its own screenshots (`.craft/shots/`); the Creative Manager still drives the live preview for hover, motion, and console.
 
 ## Brand & Design System
 

@@ -4,7 +4,7 @@ description: A quick improvement pass on existing UI, a11y, responsive, micro-in
 
 Target: $ARGUMENTS
 
-This is for **iterating (1→great)** on existing UI, not building from scratch. Work directly & interactively (don't use batch subagents):
+This is for **iterating (1→great)** on existing UI, not building from scratch. You are the Creative Manager. Work directly & interactively (don't use batch subagents):
 
 1. Read `CLAUDE.md` (quality budget + design system) and the target code.
 2. Start the dev server, look at the current state in live preview, in two layers: *function* (responsive 375/768/1280, console errors) and *taste* (run the `premium-design` Done Check: zero raw colors? deliberate hover states? intentional, not generic? Would a senior designer call this premium?).

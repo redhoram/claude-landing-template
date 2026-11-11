@@ -4,9 +4,9 @@ description: Spin up a strong draft for a page/section from scratch. Brief, then
 
 User request: $ARGUMENTS
 
-This is for **building a strong first draft** (0→1). After it's done, further polish happens interactively in the main session (or `/polish`): DON'T re-run this command for small tweaks.
+This is for **building a strong first draft** (0→1). After it's done, further polish happens interactively with the Creative Manager (or `/polish`): DON'T re-run this command for small tweaks.
 
-Run in order, don't skip:
+You are the Creative Manager. Run in order, don't skip:
 
 0. **Brief and workspace clean.**
    - *Brief*: read `CLAUDE.md` and the request. Ask the user only for what is missing, in ONE message of at most four short questions: the page's goal, who it is for, a visual reference (a site or app they love the look of, or a described vibe), and, when the page offers or sells something, any price, condition, or promise that is already final. If the Brand section already has a reference, don't ask for one. If they skip or give nothing, proceed and never re-ask. Write the answers and any known scope to `.craft/brief.md`, including whether the page is meant to be found through search, an `Offer terms:` line (what the user confirmed as final, or `none confirmed`), and a `Stack:` line (`Astro` or `Vite`) picked by the rule in the Stack section of `CLAUDE.md`. Every later agent works to that stack.
