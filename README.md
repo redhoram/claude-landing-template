@@ -108,5 +108,8 @@ And **fail loud, not silent**: the brand, SEO plan, copy, and design specs carry
 **Included skills adapted from others**
 - `antislop` and its companion skills: adapted from [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 by miqdadbadjuber, MIT License (`.claude/skills/antislop/LICENSE`). Changes: no install wizard or mode question, a fixed mode per agent, a theme toggle only when asked, and no em dash or emoji characters.
 - `humanizer` v3.1.0 by Siqi Chen, MIT License (`.claude/skills/humanizer/LICENSE`), included unchanged; its examples keep the dashes and emoji it teaches you to remove.
+- `ux-research`: psychology base adapted from [ux-psychology-skill](https://github.com/Nuclear-Marmalade/ux-psychology-skill) by Glen Healy, MIT License.
+- `web-quality`: adapted from [web-quality-skills](https://github.com/addyosmani/web-quality-skills) by Addy Osmani, MIT License.
+- The notices for these two sources are in `THIRD-PARTY-NOTICES.md`.
 
 Built with [Claude Code](https://claude.com/claude-code).

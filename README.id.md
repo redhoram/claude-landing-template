@@ -108,5 +108,8 @@ Dan **gagal keras, bukan diam-diam**: spec brand, rencana SEO, copy, dan design 
 **Skill bawaan hasil adaptasi**
 - `antislop` dan skill pendampingnya: diadaptasi dari [anti-slop](https://github.com/miqdadbadjuber/anti-slop) v3.2.23 karya miqdadbadjuber, Lisensi MIT (`.claude/skills/antislop/LICENSE`). Perubahan: tanpa wizard instalasi dan pertanyaan mode, mode tetap per agent, toggle tema hanya kalau diminta, dan tanpa karakter em dash atau emoji.
 - `humanizer` v3.1.0 karya Siqi Chen, Lisensi MIT (`.claude/skills/humanizer/LICENSE`), disertakan tanpa perubahan; contoh di dalamnya tetap memuat dash dan emoji yang justru diajarkan untuk dibuang.
+- `ux-research`: dasar psikologinya diadaptasi dari [ux-psychology-skill](https://github.com/Nuclear-Marmalade/ux-psychology-skill) karya Glen Healy, Lisensi MIT.
+- `web-quality`: diadaptasi dari [web-quality-skills](https://github.com/addyosmani/web-quality-skills) karya Addy Osmani, Lisensi MIT.
+- Pemberitahuan kedua sumber ini ada di `THIRD-PARTY-NOTICES.md`.
 
 Dibangun dengan [Claude Code](https://claude.com/claude-code).
